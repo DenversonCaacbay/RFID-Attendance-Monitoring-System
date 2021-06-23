@@ -1,0 +1,14 @@
+C:\Users\Denver-Kun\source\repos\AttendanceMonitoringSystem2\AttendanceMonitoringSystem2\bin\Debug\AttendanceMonitoringSystem2.exe.config
+C:\Users\Denver-Kun\source\repos\AttendanceMonitoringSystem2\AttendanceMonitoringSystem2\bin\Debug\AttendanceMonitoringSystem2.exe
+C:\Users\Denver-Kun\source\repos\AttendanceMonitoringSystem2\AttendanceMonitoringSystem2\bin\Debug\AttendanceMonitoringSystem2.pdb
+C:\Users\Denver-Kun\source\repos\AttendanceMonitoringSystem2\AttendanceMonitoringSystem2\obj\Debug\AttendanceMonitoringSystem2.Form1.resources
+C:\Users\Denver-Kun\source\repos\AttendanceMonitoringSystem2\AttendanceMonitoringSystem2\obj\Debug\AttendanceMonitoringSystem2.Properties.Resources.resources
+C:\Users\Denver-Kun\source\repos\AttendanceMonitoringSystem2\AttendanceMonitoringSystem2\obj\Debug\AttendanceMonitoringSystem2.csproj.GenerateResource.cache
+C:\Users\Denver-Kun\source\repos\AttendanceMonitoringSystem2\AttendanceMonitoringSystem2\obj\Debug\AttendanceMonitoringSystem2.csproj.CoreCompileInputs.cache
+C:\Users\Denver-Kun\source\repos\AttendanceMonitoringSystem2\AttendanceMonitoringSystem2\obj\Debug\AttendanceMonitoringSystem2.exe
+C:\Users\Denver-Kun\source\repos\AttendanceMonitoringSystem2\AttendanceMonitoringSystem2\obj\Debug\AttendanceMonitoringSystem2.pdb
+C:\Users\Denver-Kun\source\repos\AttendanceMonitoringSystem2\AttendanceMonitoringSystem2\bin\Debug\FontAwesome.Sharp.dll
+C:\Users\Denver-Kun\source\repos\AttendanceMonitoringSystem2\AttendanceMonitoringSystem2\obj\Debug\AttendanceMonitoringSystem2.csproj.CopyComplete
+C:\Users\Denver-Kun\source\repos\AttendanceMonitoringSystem2\AttendanceMonitoringSystem2\obj\Debug\AttendanceMonitoringSystem2.attendance.resources
+C:\Users\Denver-Kun\source\repos\AttendanceMonitoringSystem2\AttendanceMonitoringSystem2\obj\Debug\AttendanceMonitoringSystem2.manage.resources
+C:\Users\Denver-Kun\source\repos\AttendanceMonitoringSystem2\AttendanceMonitoringSystem2\obj\Debug\AttendanceMonitoringSystem2.csprojAssemblyReference.cache
