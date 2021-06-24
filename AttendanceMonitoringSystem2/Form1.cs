@@ -9,12 +9,51 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Drawing.Text;
+using MySql.Data.MySqlClient;
 
 
 namespace AttendanceMonitoringSystem2
 {
     public partial class Form1 : Form
     {
+        /*
+        //database needs
+        //string database = "datasource=localhost; port=3306; username=root; password=; database=school";
+
+        public static MySqlConnection connect;
+        public static MySqlCommand command;
+        public static MySqlDataAdapter adapter;
+        public static DataTable table;
+        public static string sql_showStudent = DatabaseConnection.DatabaseClass.showAll;
+
+        public static void setupDB()
+        {
+            connect = new MySqlConnection(DatabaseConnection.DatabaseClass.database);
+            adapter = new MySqlDataAdapter();
+            table = new DataTable();
+        }
+
+        public static void refreshForm()
+        {
+            try
+            {
+                Form1.table.Clear();
+                Form1.connect.Open();
+                Form1.command = new MySqlCommand(sql_showStudent, connect);
+                Form1.adapter.SelectCommand = command;
+                Form1.adapter.Fill(table);
+
+                //dataGridView1.DataSource = table;
+                //manage.dataGridView1.DataSource = table;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+        */
+
+
         [DllImport("Gdi32.dll" ,EntryPoint = "CreateRoundRectRgn")]
 
         private static extern IntPtr CreateRoundRectRgn
@@ -137,6 +176,11 @@ namespace AttendanceMonitoringSystem2
             panel5.Hide();
             panel7.Show();
             panel6.Hide();
+        }
+
+        private void manage1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
