@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 24, 2021 at 04:29 PM
+-- Generation Time: Jun 25, 2021 at 10:34 AM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 8.0.7
 
@@ -28,8 +28,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `student` (
-  `id` int(15) NOT NULL,
-  `stud_number` int(10) NOT NULL,
+  `student_number` int(15) NOT NULL,
   `lrn` int(30) NOT NULL,
   `first_name` varchar(64) NOT NULL,
   `last_name` varchar(64) NOT NULL,
@@ -41,11 +40,10 @@ CREATE TABLE `student` (
 -- Dumping data for table `student`
 --
 
-INSERT INTO `student` (`id`, `stud_number`, `lrn`, `first_name`, `last_name`, `course`, `section`) VALUES
-(1, 201910498, 201910498, 'Pocholo', 'Gopez', 'BSIT', 'A'),
-(2, 201910499, 201910499, 'Denverson', 'Caacbay', 'BSIT', 'B'),
-(3, 201910498, 201910498, 'Harbey', 'Calica', 'CCS', 'C'),
-(4, 201910498, 201910498, 'Mark', 'Gardiola', 'EMC', 'C');
+INSERT INTO `student` (`student_number`, `lrn`, `first_name`, `last_name`, `course`, `section`) VALUES
+(15, 201910498, 'Pocholo', 'Gopez', 'BSIT', 'A'),
+(16, 201910499, 'Denverson', 'Caacbay', 'BSCS', 'B'),
+(17, 201910500, 'Roy', 'Gopez', 'BSCS', 'C');
 
 --
 -- Indexes for dumped tables
@@ -55,7 +53,7 @@ INSERT INTO `student` (`id`, `stud_number`, `lrn`, `first_name`, `last_name`, `c
 -- Indexes for table `student`
 --
 ALTER TABLE `student`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`student_number`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -65,7 +63,7 @@ ALTER TABLE `student`
 -- AUTO_INCREMENT for table `student`
 --
 ALTER TABLE `student`
-  MODIFY `id` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `student_number` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
