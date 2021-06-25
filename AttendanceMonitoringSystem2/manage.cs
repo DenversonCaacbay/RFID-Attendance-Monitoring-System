@@ -199,9 +199,9 @@ namespace AttendanceMonitoringSystem2
             textbox_section.Text = dataGridView1.Rows[e.RowIndex].Cells[5].Value.ToString();
 
             
-                button2.Enabled = Enabled;
-                button3.Enabled = Enabled;
-                button1.Enabled = false;
+            button2.Enabled = Enabled;
+            button3.Enabled = Enabled;
+            button1.Enabled = false;
             textbox_studNum.Enabled = false;
             textbox_lrn.Enabled = false;
 
@@ -233,13 +233,46 @@ namespace AttendanceMonitoringSystem2
         {
 
         }
-
+        
+        //search
         private void button5_Click(object sender, EventArgs e)
         {
-            connect.Open();
-                command = new MySqlCommand(DatabaseConnection.DatabaseClass.sql_search_student(textbox_studNum.Text), connect);
-                MySqlDataReader reader2;
-                reader2 = command.ExecuteReader();
+            connect.Close();
+            //checks if empty
+            if (String.IsNullOrEmpty(textbox_studSearch.Text) || textbox_studSearch.Text.Contains(" "))
+            {
+                MessageBox.Show("Student Number is Empty!", "Alert");
+            }
+            else
+            {
+                connect.Open();
+                command = new MySqlCommand(DatabaseConnection.DatabaseClass.sql_search_student(textbox_studSearch.Text), connect);
+                adapter.SelectCommand = command;
+                table.Clear();
+                adapter.Fill(table);
+
+                if (table.Rows.Count > 0)
+                {
+                    try
+                    {
+                        dataGridView1.DataSource = table;
+                        connect.Close();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                        connect.Close();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Student does not exist!", "Alert");
+                    connect.Close();
+                }
+            }
+
+
+
         }
     }
 }

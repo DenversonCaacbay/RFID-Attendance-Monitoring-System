@@ -29,9 +29,9 @@ namespace AttendanceMonitoringSystem2.DatabaseConnection
             return "SELECT * FROM student WHERE first_name='"+firstName+"' AND last_name='"+lastName+"' ";
         }
         //SEARCH
-        public static string sql_search_student(string student_number)
+        public static string sql_search_student(string ID)
         {
-            return "SELECT * FROM student WHERE student_number LIKE CONCAT('%',,'%') ";
+            return "SELECT * FROM student WHERE student_number="+ID;
         }
         //DELETE
         public static string sql_delete_student(string ID)
