@@ -185,7 +185,7 @@ namespace AttendanceMonitoringSystem2
 
         private void manage1_Load(object sender, EventArgs e)
         {
-
+            
         }
     }
 }
