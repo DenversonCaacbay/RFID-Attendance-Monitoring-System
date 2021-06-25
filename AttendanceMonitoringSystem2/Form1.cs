@@ -16,6 +16,7 @@ namespace AttendanceMonitoringSystem2
 {
     public partial class Form1 : Form
     {
+
         /*
         //database needs
         //string database = "datasource=localhost; port=3306; username=root; password=; database=school";
@@ -70,7 +71,7 @@ namespace AttendanceMonitoringSystem2
         {
             InitializeComponent();
             this.FormBorderStyle = FormBorderStyle.None;
-            this.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0,Width,Height, 20, 20));
+            this.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0,Width,Height, 15, 15));
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -83,6 +84,7 @@ namespace AttendanceMonitoringSystem2
 
             attendance1.Show();
             manage1.Hide();
+            record1.Hide();
 
             
             panel5.Hide();
@@ -111,6 +113,7 @@ namespace AttendanceMonitoringSystem2
         {
             attendance1.Show();
             manage1.Hide();
+            record1.Hide();
 
             panel4.Show();
             panel5.Hide();
@@ -122,6 +125,7 @@ namespace AttendanceMonitoringSystem2
         {
             attendance1.Hide();
             manage1.Show();
+            record1.Hide();
 
             panel4.Hide();
             panel5.Show();
@@ -171,6 +175,7 @@ namespace AttendanceMonitoringSystem2
         {
             attendance1.Hide();
             manage1.Hide();
+            record1.Show();
 
             panel4.Hide();
             panel5.Hide();
