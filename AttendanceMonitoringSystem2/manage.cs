@@ -71,18 +71,14 @@ namespace AttendanceMonitoringSystem2
             button1.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, button1.Width, button1.Height, 10, 10));
             button2.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, button2.Width, button2.Height, 10, 10));
             button3.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, button3.Width, button3.Height, 10, 10));
+
             refreshForm();
         }
 
         //onclick
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            textbox_studNum.Text = dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString();
-            textbox_lrn.Text = dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString();
-            textbox_firstName.Text = dataGridView1.Rows[e.RowIndex].Cells[2].Value.ToString();
-            textbox_lastName.Text = dataGridView1.Rows[e.RowIndex].Cells[3].Value.ToString();
-            textbox_course.Text = dataGridView1.Rows[e.RowIndex].Cells[4].Value.ToString();
-            textbox_section.Text = dataGridView1.Rows[e.RowIndex].Cells[5].Value.ToString();
+
         }
 
         //create student
@@ -93,7 +89,11 @@ namespace AttendanceMonitoringSystem2
             MySqlDataReader reader;
             reader = command.ExecuteReader();
 
-            if (reader.HasRows)
+            if (textbox_studNum.Text == "" || textbox_lrn.Text == "" || textbox_firstName.Text == "" || textbox_lastName.Text == "" || textbox_course.Text == "" || textbox_section.Text == "")
+            {
+                MessageBox.Show("PLEASE COMPLETE THE FORM !");
+            }
+            else if (reader.HasRows)
             {
                 connect.Close();
                 MessageBox.Show("Student Already Existed!");
@@ -104,7 +104,7 @@ namespace AttendanceMonitoringSystem2
                 try
                 {
                     connect.Open();
-                    command = new MySqlCommand(DatabaseConnection.DatabaseClass.sql_insert_student(
+                    command = new MySqlCommand(DatabaseConnection.DatabaseClass.sql_insert_student(textbox_studNum.Text,
                         textbox_lrn.Text, textbox_firstName.Text, textbox_lastName.Text, textbox_course.Text, textbox_section.Text), connect);
                     MySqlDataReader reader2;
                     reader2 = command.ExecuteReader();
@@ -116,6 +116,10 @@ namespace AttendanceMonitoringSystem2
                     textbox_lastName.Text = String.Empty;
                     textbox_course.Text = String.Empty;
                     textbox_section.Text = String.Empty;
+
+                    button1.Enabled = true;
+                    button1.Enabled = false;
+                    button1.Enabled = false;
                     connect.Close();
                     refreshForm();
                 }
@@ -142,6 +146,13 @@ namespace AttendanceMonitoringSystem2
             textbox_lastName.Text = String.Empty;
             textbox_course.Text = String.Empty;
             textbox_section.Text = String.Empty;
+
+            button1.Enabled = true;
+            button2.Enabled = false;
+            button3.Enabled = false;
+
+            textbox_studNum.Enabled = true;
+            textbox_lrn.Enabled = true;
             connect.Close();
             refreshForm();
         }
@@ -164,9 +175,71 @@ namespace AttendanceMonitoringSystem2
                 textbox_lastName.Text = String.Empty;
                 textbox_course.Text = String.Empty;
                 textbox_section.Text = String.Empty;
+
+                button1.Enabled = true;
+                button2.Enabled = false;
+                button3.Enabled = false;
+
                 refreshForm();
                 connect.Close();
             }
+        }
+
+        private void dataGridView1_DoubleClick(object sender, EventArgs e)
+        {
+        }
+
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            textbox_studNum.Text = dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString();
+            textbox_lrn.Text = dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString();
+            textbox_firstName.Text = dataGridView1.Rows[e.RowIndex].Cells[2].Value.ToString();
+            textbox_lastName.Text = dataGridView1.Rows[e.RowIndex].Cells[3].Value.ToString();
+            textbox_course.Text = dataGridView1.Rows[e.RowIndex].Cells[4].Value.ToString();
+            textbox_section.Text = dataGridView1.Rows[e.RowIndex].Cells[5].Value.ToString();
+
+            
+                button2.Enabled = Enabled;
+                button3.Enabled = Enabled;
+                button1.Enabled = false;
+            textbox_studNum.Enabled = false;
+            textbox_lrn.Enabled = false;
+
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            DialogResult dialog = MessageBox.Show("Are you sure you want to cancel?", "Message", MessageBoxButtons.YesNo);
+            if (dialog == DialogResult.Yes)
+            {
+                textbox_studNum.Text = String.Empty;
+                textbox_lrn.Text = String.Empty;
+                textbox_firstName.Text = String.Empty;
+                textbox_lastName.Text = String.Empty;
+                textbox_course.Text = String.Empty;
+                textbox_section.Text = String.Empty;
+
+                button1.Enabled = true;
+                button2.Enabled = false;
+                button3.Enabled = false;
+
+                textbox_studNum.Enabled = true;
+                textbox_lrn.Enabled = true;
+            }
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            connect.Open();
+                command = new MySqlCommand(DatabaseConnection.DatabaseClass.sql_search_student(textbox_studNum.Text), connect);
+                MySqlDataReader reader2;
+                reader2 = command.ExecuteReader();
         }
     }
 }
