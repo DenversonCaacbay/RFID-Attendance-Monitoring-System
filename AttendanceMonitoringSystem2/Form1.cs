@@ -78,10 +78,12 @@ namespace AttendanceMonitoringSystem2
         {
             //iconButton1.Region = Region.FromHrgn(CreateRoundRectRgn(0,0,iconButton1.Width,iconButton1.Height,20,20));
             //iconButton2.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, iconButton2.Width, iconButton1.Height, 20, 20));
+            panel2.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, panel2.Width, panel2.Height, 50, 50));
+
 
             label8.Text = DateTime.Now.ToString("hh:mm tt"); //result 11:11:45 PM
             label9.Text = DateTime.Now.ToShortDateString(); //30.5.2012
-
+            
             attendance1.Show();
             manage1.Hide();
             record1.Hide();
@@ -151,10 +153,11 @@ namespace AttendanceMonitoringSystem2
         private void iconButton3_Click(object sender, EventArgs e)
         {
             panel6.Show();
-            DialogResult dr = MessageBox.Show("Do you want to exit.", "Message", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            DialogResult dr = MessageBox.Show("Do you want to Log Out.", "Message", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (dr == DialogResult.Yes)
             {
-                Application.ExitThread();
+                this.Hide();
+                new login().Show();
             }
             else
             { }
@@ -186,6 +189,16 @@ namespace AttendanceMonitoringSystem2
         private void manage1_Load(object sender, EventArgs e)
         {
             
+        }
+
+        private void label8_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void attendance1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

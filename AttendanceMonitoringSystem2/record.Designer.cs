@@ -59,7 +59,7 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersWidth = 5;
-            this.dataGridView1.Size = new System.Drawing.Size(998, 522);
+            this.dataGridView1.Size = new System.Drawing.Size(693, 424);
             this.dataGridView1.TabIndex = 0;
             // 
             // Column1
@@ -119,10 +119,10 @@
             // 
             this.button1.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.button1.Font = new System.Drawing.Font("Bahnschrift Condensed", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(57)))), ((int)(((byte)(93)))));
-            this.button1.Location = new System.Drawing.Point(15, 554);
+            this.button1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(140)))), ((int)(((byte)(0)))));
+            this.button1.Location = new System.Drawing.Point(15, 464);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(998, 47);
+            this.button1.Size = new System.Drawing.Size(693, 47);
             this.button1.TabIndex = 1;
             this.button1.Text = "PRINT RECORD";
             this.button1.UseVisualStyleBackColor = false;
@@ -131,11 +131,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(57)))), ((int)(((byte)(93)))));
+            this.BackColor = System.Drawing.Color.White;
             this.Controls.Add(this.button1);
             this.Controls.Add(this.dataGridView1);
             this.Name = "record";
-            this.Size = new System.Drawing.Size(1075, 620);
+            this.Size = new System.Drawing.Size(747, 534);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 

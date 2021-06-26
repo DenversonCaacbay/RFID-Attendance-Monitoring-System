@@ -225,6 +225,7 @@ namespace AttendanceMonitoringSystem2
 
                 textbox_studNum.Enabled = true;
                 textbox_lrn.Enabled = true;
+                refreshForm();
             }
 
         }
