@@ -125,14 +125,21 @@ namespace AttendanceMonitoringSystem2
 
         private void iconButton2_Click(object sender, EventArgs e)
         {
-            attendance1.Hide();
-            manage1.Show();
-            record1.Hide();
+            if (login.admin_access == "1")
+            {
+                attendance1.Hide();
+                manage1.Show();
+                record1.Hide();
 
-            panel4.Hide();
-            panel5.Show();
-            panel7.Hide();
-            panel6.Hide();
+                panel4.Hide();
+                panel5.Show();
+                panel7.Hide();
+                panel6.Hide();
+            }
+            else
+            {
+                MessageBox.Show("You do not have the access!", "Alert");
+            }
         }
 
         private void panel3_Paint(object sender, PaintEventArgs e)
@@ -158,9 +165,12 @@ namespace AttendanceMonitoringSystem2
             {
                 this.Hide();
                 new login().Show();
+                login.admin_access = "";
             }
             else
-            { }
+            { 
+                
+            }
         }
 
         private void iconButton4_Click(object sender, EventArgs e)

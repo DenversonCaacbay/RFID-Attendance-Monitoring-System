@@ -38,5 +38,11 @@ namespace AttendanceMonitoringSystem2.DatabaseConnection
         {
             return "DELETE FROM student WHERE student_number="+ID;
         }
+
+        //login
+        public static string sql_login_admin(string username, string password)
+        {
+            return "SELECT * FROM admin WHERE username='"+username+"' AND password='"+password+"' ";
+        }
     }
 }

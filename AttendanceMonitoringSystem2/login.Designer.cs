@@ -32,8 +32,8 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textbox_username = new System.Windows.Forms.TextBox();
+            this.textbox_password = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -88,19 +88,20 @@
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
             // 
-            // textBox1
+            // textbox_username
             // 
-            this.textBox1.Location = new System.Drawing.Point(326, 87);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(164, 20);
-            this.textBox1.TabIndex = 1;
+            this.textbox_username.Location = new System.Drawing.Point(326, 87);
+            this.textbox_username.Name = "textbox_username";
+            this.textbox_username.Size = new System.Drawing.Size(164, 20);
+            this.textbox_username.TabIndex = 1;
             // 
-            // textBox2
+            // textbox_password
             // 
-            this.textBox2.Location = new System.Drawing.Point(326, 140);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(164, 20);
-            this.textBox2.TabIndex = 2;
+            this.textbox_password.Location = new System.Drawing.Point(326, 140);
+            this.textbox_password.Name = "textbox_password";
+            this.textbox_password.PasswordChar = '*';
+            this.textbox_password.Size = new System.Drawing.Size(164, 20);
+            this.textbox_password.TabIndex = 2;
             // 
             // label1
             // 
@@ -181,8 +182,8 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.textbox_password);
+            this.Controls.Add(this.textbox_username);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "login";
@@ -203,8 +204,8 @@
 
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox textbox_username;
+        private System.Windows.Forms.TextBox textbox_password;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel panel2;

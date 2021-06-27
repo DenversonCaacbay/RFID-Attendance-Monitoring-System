@@ -20,7 +20,7 @@ namespace AttendanceMonitoringSystem2
         public static DataTable table;
         public static string sql_showStudent = DatabaseConnection.DatabaseClass.showAll;
 
-        public void setupDB()
+        public static void setupDB()
         {
             connect = new MySqlConnection(DatabaseConnection.DatabaseClass.database);
             adapter = new MySqlDataAdapter();
