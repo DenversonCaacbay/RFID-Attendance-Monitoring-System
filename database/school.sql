@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 25, 2021 at 10:34 AM
+-- Generation Time: Jun 27, 2021 at 02:09 PM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 8.0.7
 
@@ -20,6 +20,27 @@ SET time_zone = "+00:00";
 --
 -- Database: `school`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `admin`
+--
+
+CREATE TABLE `admin` (
+  `id` int(15) NOT NULL,
+  `username` varchar(32) NOT NULL,
+  `password` varchar(32) NOT NULL,
+  `admin_access` varchar(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `admin`
+--
+
+INSERT INTO `admin` (`id`, `username`, `password`, `admin_access`) VALUES
+(1, 'admin', 'admin', '1'),
+(2, 'user1', '123', '0');
 
 -- --------------------------------------------------------
 
@@ -50,6 +71,12 @@ INSERT INTO `student` (`student_number`, `lrn`, `first_name`, `last_name`, `cour
 --
 
 --
+-- Indexes for table `admin`
+--
+ALTER TABLE `admin`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `student`
 --
 ALTER TABLE `student`
@@ -60,10 +87,16 @@ ALTER TABLE `student`
 --
 
 --
+-- AUTO_INCREMENT for table `admin`
+--
+ALTER TABLE `admin`
+  MODIFY `id` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT for table `student`
 --
 ALTER TABLE `student`
-  MODIFY `student_number` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `student_number` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
