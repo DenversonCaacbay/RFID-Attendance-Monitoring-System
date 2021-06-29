@@ -14,39 +14,28 @@ namespace AttendanceMonitoringSystem2
 {
     public partial class manage : UserControl
     {
-        public static MySqlConnection connect;
-        public static MySqlCommand command;
-        public static MySqlDataAdapter adapter;
-        public static DataTable table;
-        public static string sql_showStudent = DatabaseConnection.DatabaseClass.showAll;
-
-        public static void setupDB()
-        {
-            connect = new MySqlConnection(DatabaseConnection.DatabaseClass.database);
-            adapter = new MySqlDataAdapter();
-            table = new DataTable();
-        }
 
         public void refreshForm()
         {
-            connect.Close();
+            DatabaseConnection.DatabaseClass.connect.Close();
             try
             {
-                table.Clear();
-                connect.Open();
-                command = new MySqlCommand(sql_showStudent, connect);
-                adapter.SelectCommand = command;
-                adapter.Fill(table);
+                DatabaseConnection.DatabaseClass.tableStudent.Clear();
+                DatabaseConnection.DatabaseClass.connect.Open();
+                DatabaseConnection.DatabaseClass.command = new MySqlCommand
+                    (DatabaseConnection.DatabaseClass.sql_showStudent, DatabaseConnection.DatabaseClass.connect);
+                DatabaseConnection.DatabaseClass.adapter.SelectCommand = DatabaseConnection.DatabaseClass.command;
+                DatabaseConnection.DatabaseClass.adapter.Fill(DatabaseConnection.DatabaseClass.tableStudent);
 
-                dataGridView1.DataSource = table;
-                connect.Close();
+                dataGridView1.DataSource = DatabaseConnection.DatabaseClass.tableStudent;
+                DatabaseConnection.DatabaseClass.connect.Close();
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
         }
-        
+
 
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
 
@@ -63,7 +52,7 @@ namespace AttendanceMonitoringSystem2
         public manage()
         {
             InitializeComponent();
-            setupDB();
+            DatabaseConnection.DatabaseClass.manageSetup();
         }
 
         private void manage_Load(object sender, EventArgs e)
@@ -84,10 +73,10 @@ namespace AttendanceMonitoringSystem2
         //create student
         private void button1_Click(object sender, EventArgs e)
         {
-            connect.Open();
-            command = new MySqlCommand(DatabaseConnection.DatabaseClass.sql_checker_student(textbox_firstName.Text, textbox_lastName.Text), connect);
+            DatabaseConnection.DatabaseClass.connect.Open();
+            DatabaseConnection.DatabaseClass.command = new MySqlCommand(DatabaseConnection.DatabaseClass.sql_checker_student(textbox_firstName.Text, textbox_lastName.Text), DatabaseConnection.DatabaseClass.connect);
             MySqlDataReader reader;
-            reader = command.ExecuteReader();
+            reader = DatabaseConnection.DatabaseClass.command.ExecuteReader();
 
             if (textbox_studNum.Text == "" || textbox_lrn.Text == "" || textbox_firstName.Text == "" || textbox_lastName.Text == "" || textbox_course.Text == "" || textbox_section.Text == "")
             {
@@ -95,19 +84,19 @@ namespace AttendanceMonitoringSystem2
             }
             else if (reader.HasRows)
             {
-                connect.Close();
+                DatabaseConnection.DatabaseClass.connect.Close();
                 MessageBox.Show("Student Already Existed!");
             }
             else
             {
-                connect.Close();
+                DatabaseConnection.DatabaseClass.connect.Close();
                 try
                 {
-                    connect.Open();
-                    command = new MySqlCommand(DatabaseConnection.DatabaseClass.sql_insert_student(textbox_studNum.Text,
-                        textbox_lrn.Text, textbox_firstName.Text, textbox_lastName.Text, textbox_course.Text, textbox_section.Text), connect);
+                    DatabaseConnection.DatabaseClass.connect.Open();
+                    DatabaseConnection.DatabaseClass.command = new MySqlCommand(DatabaseConnection.DatabaseClass.sql_insert_student(textbox_studNum.Text,
+                        textbox_lrn.Text, textbox_firstName.Text, textbox_lastName.Text, textbox_course.Text, textbox_section.Text), DatabaseConnection.DatabaseClass.connect);
                     MySqlDataReader reader2;
-                    reader2 = command.ExecuteReader();
+                    reader2 = DatabaseConnection.DatabaseClass.command.ExecuteReader();
                     MessageBox.Show("Student Created!");
                     //for clearing
                     textbox_studNum.Text = String.Empty;
@@ -120,7 +109,7 @@ namespace AttendanceMonitoringSystem2
                     button1.Enabled = true;
                     button1.Enabled = false;
                     button1.Enabled = false;
-                    connect.Close();
+                    DatabaseConnection.DatabaseClass.connect.Close();
                     refreshForm();
                 }
                 catch (Exception ex)
@@ -133,11 +122,11 @@ namespace AttendanceMonitoringSystem2
         //update student
         private void button2_Click(object sender, EventArgs e)
         {
-            connect.Open();
-            command = new MySqlCommand(DatabaseConnection.DatabaseClass.sql_update_student(textbox_lrn.Text, textbox_firstName.Text, 
-                textbox_lastName.Text, textbox_course.Text, textbox_section.Text, textbox_studNum.Text), connect);
+            DatabaseConnection.DatabaseClass.connect.Open();
+            DatabaseConnection.DatabaseClass.command = new MySqlCommand(DatabaseConnection.DatabaseClass.sql_update_student(textbox_lrn.Text, textbox_firstName.Text, 
+                textbox_lastName.Text, textbox_course.Text, textbox_section.Text, textbox_studNum.Text), DatabaseConnection.DatabaseClass.connect);
             MySqlDataReader reader;
-            reader = command.ExecuteReader();
+            reader = DatabaseConnection.DatabaseClass.command.ExecuteReader();
             MessageBox.Show("Student Updated!");
             //for clearing
             textbox_studNum.Text = String.Empty;
@@ -153,7 +142,7 @@ namespace AttendanceMonitoringSystem2
 
             textbox_studNum.Enabled = true;
             textbox_lrn.Enabled = true;
-            connect.Close();
+            DatabaseConnection.DatabaseClass.connect.Close();
             refreshForm();
         }
 
@@ -163,10 +152,10 @@ namespace AttendanceMonitoringSystem2
             DialogResult dialog = MessageBox.Show("Are you sure?", "Message", MessageBoxButtons.YesNo);
             if(dialog == DialogResult.Yes)
             {
-                connect.Open();
-                command = new MySqlCommand(DatabaseConnection.DatabaseClass.sql_delete_student(textbox_studNum.Text), connect);
+                DatabaseConnection.DatabaseClass.connect.Open();
+                DatabaseConnection.DatabaseClass.command = new MySqlCommand(DatabaseConnection.DatabaseClass.sql_delete_student(textbox_studNum.Text), DatabaseConnection.DatabaseClass.connect);
                 MySqlDataReader reader;
-                reader = command.ExecuteReader();
+                reader = DatabaseConnection.DatabaseClass.command.ExecuteReader();
                 MessageBox.Show("Student Deleted!");
                 //for clearing
                 textbox_studNum.Text = String.Empty;
@@ -181,7 +170,7 @@ namespace AttendanceMonitoringSystem2
                 button3.Enabled = false;
 
                 refreshForm();
-                connect.Close();
+                DatabaseConnection.DatabaseClass.connect.Close();
             }
         }
 
@@ -238,7 +227,7 @@ namespace AttendanceMonitoringSystem2
         //search
         private void button5_Click(object sender, EventArgs e)
         {
-            connect.Close();
+            DatabaseConnection.DatabaseClass.connect.Close();
             //checks if empty
             if (String.IsNullOrEmpty(textbox_studSearch.Text) || textbox_studSearch.Text.Contains(" "))
             {
@@ -246,29 +235,29 @@ namespace AttendanceMonitoringSystem2
             }
             else
             {
-                connect.Open();
-                command = new MySqlCommand(DatabaseConnection.DatabaseClass.sql_search_student(textbox_studSearch.Text), connect);
-                adapter.SelectCommand = command;
-                table.Clear();
-                adapter.Fill(table);
+                DatabaseConnection.DatabaseClass.connect.Open();
+                DatabaseConnection.DatabaseClass.command = new MySqlCommand(DatabaseConnection.DatabaseClass.sql_search_student(textbox_studSearch.Text), DatabaseConnection.DatabaseClass.connect);
+                DatabaseConnection.DatabaseClass.adapter.SelectCommand = DatabaseConnection.DatabaseClass.command;
+                DatabaseConnection.DatabaseClass.tableStudent.Clear();
+                DatabaseConnection.DatabaseClass.adapter.Fill(DatabaseConnection.DatabaseClass.tableStudent);
 
-                if (table.Rows.Count > 0)
+                if (DatabaseConnection.DatabaseClass.tableStudent.Rows.Count > 0)
                 {
                     try
                     {
-                        dataGridView1.DataSource = table;
-                        connect.Close();
+                        dataGridView1.DataSource = DatabaseConnection.DatabaseClass.tableStudent;
+                        DatabaseConnection.DatabaseClass.connect.Close();
                     }
                     catch (Exception ex)
                     {
                         MessageBox.Show(ex.Message);
-                        connect.Close();
+                        DatabaseConnection.DatabaseClass.connect.Close();
                     }
                 }
                 else
                 {
                     MessageBox.Show("Student does not exist!", "Alert");
-                    connect.Close();
+                    DatabaseConnection.DatabaseClass.connect.Close();
                 }
             }
 

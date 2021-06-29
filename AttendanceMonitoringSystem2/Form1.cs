@@ -81,8 +81,9 @@ namespace AttendanceMonitoringSystem2
             panel2.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, panel2.Width, panel2.Height, 50, 50));
 
 
-            label8.Text = DateTime.Now.ToString("hh:mm tt"); //result 11:11:45 PM
-            label9.Text = DateTime.Now.ToShortDateString(); //30.5.2012
+            //label8.Text = DateTime.Now.ToString("hh:mm tt"); //result 11:11:45 PM
+            //label9.Text = DateTime.Now.ToShortDateString(); //30.5.2012
+            timer1.Start();
             
             attendance1.Show();
             manage1.Hide();
@@ -210,5 +211,14 @@ namespace AttendanceMonitoringSystem2
         {
 
         }
+
+        //Date and time
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            label8.Text = DateTime.Now.ToString("hh:mm:ss tt"); //result 11:11:45 PM
+            label9.Text = DateTime.Now.ToShortDateString(); //30.5.2012
+        }
+
+
     }
 }

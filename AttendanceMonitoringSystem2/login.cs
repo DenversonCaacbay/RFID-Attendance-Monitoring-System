@@ -14,11 +14,6 @@ namespace AttendanceMonitoringSystem2
 {
     public partial class login : Form
     {
-        public static MySqlConnection connect;
-        public static MySqlCommand command;
-        public static MySqlDataAdapter adapter;
-        public static DataTable tableLogin;
-
         public static string admin_access;
 
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
@@ -33,18 +28,12 @@ namespace AttendanceMonitoringSystem2
             int nWeightEllipse
 
         );
-
-        public static void setupDB()
-        {
-            connect = new MySqlConnection(DatabaseConnection.DatabaseClass.database);
-            adapter = new MySqlDataAdapter();
-            tableLogin = new DataTable();
-        }
+       
 
         public login()
         {
             InitializeComponent();
-            setupDB();
+            DatabaseConnection.DatabaseClass.loginSetup();
         }
 
         private void login_Load(object sender, EventArgs e)
@@ -76,19 +65,19 @@ namespace AttendanceMonitoringSystem2
         private void button1_Click(object sender, EventArgs e)
         {
             //tableLogin.Clear();
-            connect.Close();
+            DatabaseConnection.DatabaseClass.connect.Close();
             try
             {
-                connect.Open();
-                command = new MySqlCommand(DatabaseConnection.DatabaseClass.sql_login_admin(textbox_username.Text, textbox_password.Text), connect);
-                adapter.SelectCommand = command;
-                adapter.Fill(tableLogin);
+                DatabaseConnection.DatabaseClass.connect.Open();
+                DatabaseConnection.DatabaseClass.command = new MySqlCommand(DatabaseConnection.DatabaseClass.sql_login_admin(textbox_username.Text, textbox_password.Text), DatabaseConnection.DatabaseClass.connect);
+                DatabaseConnection.DatabaseClass.adapter.SelectCommand = DatabaseConnection.DatabaseClass.command;
+                DatabaseConnection.DatabaseClass.adapter.Fill(DatabaseConnection.DatabaseClass.tableLogin);
 
-                if (tableLogin.Rows.Count > 0)
+                if (DatabaseConnection.DatabaseClass.tableLogin.Rows.Count > 0)
                 {
-                    connect.Close();
-                    var user = tableLogin.Rows[0][1];
-                    admin_access = tableLogin.Rows[0][3].ToString();
+                    DatabaseConnection.DatabaseClass.connect.Close();
+                    var user = DatabaseConnection.DatabaseClass.tableLogin.Rows[0][1];
+                    admin_access = DatabaseConnection.DatabaseClass.tableLogin.Rows[0][3].ToString();
                     Console.WriteLine("Logged In User: "+user+" | Admin Access: "+admin_access);
 
 
@@ -97,7 +86,7 @@ namespace AttendanceMonitoringSystem2
                 }
                 else
                 {
-                    connect.Close();
+                    DatabaseConnection.DatabaseClass.connect.Close();
                     MessageBox.Show("Usernane/Password Invalid", "Alert");
                 }
             }
