@@ -50,6 +50,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="accounts.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="accounts.Designer.cs">
+      <DependentUpon>accounts.cs</DependentUpon>
+    </Compile>
     <Compile Include="attendance.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -83,6 +89,9 @@
     <Compile Include="record.Designer.cs">
       <DependentUpon>record.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="accounts.resx">
+      <DependentUpon>accounts.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="attendance.resx">
       <DependentUpon>attendance.cs</DependentUpon>
     </EmbeddedResource>

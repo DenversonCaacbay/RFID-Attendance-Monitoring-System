@@ -88,8 +88,9 @@ namespace AttendanceMonitoringSystem2
             attendance1.Show();
             manage1.Hide();
             record1.Hide();
+            accounts1.Hide();
 
-            
+            panel3.Hide();
             panel5.Hide();
             panel7.Hide();
             panel6.Hide();
@@ -105,11 +106,6 @@ namespace AttendanceMonitoringSystem2
         private void label1_Click(object sender, EventArgs e)
         {
             
-        }
-
-        private void iconButton1_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void iconButton1_Click_1(object sender, EventArgs e)
@@ -219,6 +215,18 @@ namespace AttendanceMonitoringSystem2
             label9.Text = DateTime.Now.ToShortDateString(); //30.5.2012
         }
 
+        private void iconButton5_Click(object sender, EventArgs e)
+        {
+            accounts1.Show();
+            attendance1.Hide();
+            manage1.Hide();
+            record1.Hide();
 
+            panel3.Show();
+            panel4.Hide();
+            panel5.Hide();
+            panel7.Hide();
+            panel6.Hide();
+        }
     }
 }
