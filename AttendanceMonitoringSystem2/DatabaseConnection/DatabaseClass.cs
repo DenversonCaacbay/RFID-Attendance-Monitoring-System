@@ -18,6 +18,7 @@ namespace AttendanceMonitoringSystem2.DatabaseConnection
         public static string showLogs = "SELECT "+
                                             "log_record.log_id,"+
                                             "log_record.student_number,"+
+                                            "log_record.attendance ,"+
                                             "student.lrn,"+
                                             "student.first_name," +
                                             "student.last_name," +
@@ -29,6 +30,10 @@ namespace AttendanceMonitoringSystem2.DatabaseConnection
 
         public static string sql_showStudent = DatabaseConnection.DatabaseClass.showAll;
 
+        public static string showAdmin = "SELECT * FROM admin";
+
+
+        //Manage.cs
         //INSERT
         public static string sql_insert_student(string student_number ,string lrn,string firstName, string lastName, string course, string section)
         {
@@ -55,20 +60,48 @@ namespace AttendanceMonitoringSystem2.DatabaseConnection
             return "DELETE FROM student WHERE student_number="+ID;
         }
 
-        //login
+        //login.cs
         public static string sql_login_admin(string username, string password)
         {
             return "SELECT * FROM admin WHERE username='"+username+"' AND password='"+password+"' ";
         }
 
+        //account.cs
+        public static string sql_insert_admin(string username, string password, string admin_access="0")
+        {
+            return "INSERT INTO admin(username, password, admin_access) VALUES ('"+username+"', '"+password+"', '"+admin_access   +"') ";
+        }
+
+        public static string sql_checker_admin(string username, string password)
+        {
+            return "SELECT * FROM admin WHERE username='"+username+"' AND password='"+password+"' ";
+        }
+
+        //attendance.cs
+        public static string sql_search_studNum(string studNum)
+        {
+            return "SELECT * FROM student WHERE student_number='"+studNum+"' ";
+        }
+
+        public static string sql_check_attendance(string studNum)
+        {
+            return "SELECT * FROM log_record WHERE student_number='" + studNum + "' ";
+        }
+        
+        public static string sql_insert_attendance(string studNum, int attendance)
+        {
+            return "INSERT INTO log_record(student_number, attendance) VALUES ('"+studNum+"', '"+attendance+"')";
+        }
         
         //Processes
         public static MySqlConnection connect;
         public static MySqlCommand command;
         public static MySqlDataAdapter adapter;
         public static DataTable tableStudent;
+        public static DataTable tableStudentSearch;
         public static DataTable tableRecord;
         public static DataTable tableLogin;
+        public static DataTable tableAdmin;
 
         public static void setupDB()
         {
@@ -94,26 +127,17 @@ namespace AttendanceMonitoringSystem2.DatabaseConnection
             DatabaseConnection.DatabaseClass.tableStudent = new DataTable();
         }
 
-        public void refreshForm()
+        public static void accountSetup()
         {
-            DatabaseConnection.DatabaseClass.connect.Close();
-            try
-            {
-                DatabaseConnection.DatabaseClass.tableRecord.Clear();
-                DatabaseConnection.DatabaseClass.connect.Open();
-                DatabaseConnection.DatabaseClass.command = new MySqlCommand(DatabaseConnection.DatabaseClass.showLogs, DatabaseConnection.DatabaseClass.connect);
-                DatabaseConnection.DatabaseClass.adapter.SelectCommand = DatabaseConnection.DatabaseClass.command;
-                DatabaseConnection.DatabaseClass.adapter.Fill(DatabaseConnection.DatabaseClass.tableRecord);
-
-                //dataGridView1.DataSource = DatabaseConnection.DatabaseClass.tableRecord;
-                DatabaseConnection.DatabaseClass.connect.Close();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+            DatabaseConnection.DatabaseClass.setupDB();
+            DatabaseConnection.DatabaseClass.tableAdmin = new DataTable();
         }
 
+        public static void attendanceSetup()
+        {
+            DatabaseConnection.DatabaseClass.setupDB();
+            DatabaseConnection.DatabaseClass.tableStudentSearch = new DataTable();
+        }
 
 
 

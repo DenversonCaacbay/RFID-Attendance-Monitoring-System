@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.textbox_StudSearch = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -35,16 +36,17 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.textbox_studNumber = new System.Windows.Forms.TextBox();
+            this.textbox_lrn = new System.Windows.Forms.TextBox();
+            this.textbox_firstName = new System.Windows.Forms.TextBox();
+            this.textbox_lastName = new System.Windows.Forms.TextBox();
+            this.textbox_course = new System.Windows.Forms.TextBox();
+            this.textbox_section = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.button5 = new System.Windows.Forms.Button();
+            this.search_student = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -124,60 +126,60 @@
             this.label6.TabIndex = 7;
             this.label6.Text = "Course :";
             // 
-            // textBox2
+            // textbox_studNumber
             // 
-            this.textBox2.Font = new System.Drawing.Font("Bahnschrift Condensed", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(25, 36);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.ReadOnly = true;
-            this.textBox2.Size = new System.Drawing.Size(274, 36);
-            this.textBox2.TabIndex = 8;
+            this.textbox_studNumber.Font = new System.Drawing.Font("Bahnschrift Condensed", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textbox_studNumber.Location = new System.Drawing.Point(25, 36);
+            this.textbox_studNumber.Name = "textbox_studNumber";
+            this.textbox_studNumber.ReadOnly = true;
+            this.textbox_studNumber.Size = new System.Drawing.Size(274, 36);
+            this.textbox_studNumber.TabIndex = 8;
             // 
-            // textBox3
+            // textbox_lrn
             // 
-            this.textBox3.Font = new System.Drawing.Font("Bahnschrift Condensed", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox3.Location = new System.Drawing.Point(25, 118);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.ReadOnly = true;
-            this.textBox3.Size = new System.Drawing.Size(274, 36);
-            this.textBox3.TabIndex = 9;
+            this.textbox_lrn.Font = new System.Drawing.Font("Bahnschrift Condensed", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textbox_lrn.Location = new System.Drawing.Point(25, 118);
+            this.textbox_lrn.Name = "textbox_lrn";
+            this.textbox_lrn.ReadOnly = true;
+            this.textbox_lrn.Size = new System.Drawing.Size(274, 36);
+            this.textbox_lrn.TabIndex = 9;
             // 
-            // textBox4
+            // textbox_firstName
             // 
-            this.textBox4.Font = new System.Drawing.Font("Bahnschrift Condensed", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox4.Location = new System.Drawing.Point(25, 206);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.ReadOnly = true;
-            this.textBox4.Size = new System.Drawing.Size(274, 36);
-            this.textBox4.TabIndex = 10;
-            this.textBox4.TextChanged += new System.EventHandler(this.textBox4_TextChanged);
+            this.textbox_firstName.Font = new System.Drawing.Font("Bahnschrift Condensed", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textbox_firstName.Location = new System.Drawing.Point(25, 206);
+            this.textbox_firstName.Name = "textbox_firstName";
+            this.textbox_firstName.ReadOnly = true;
+            this.textbox_firstName.Size = new System.Drawing.Size(274, 36);
+            this.textbox_firstName.TabIndex = 10;
+            this.textbox_firstName.TextChanged += new System.EventHandler(this.textBox4_TextChanged);
             // 
-            // textBox5
+            // textbox_lastName
             // 
-            this.textBox5.Font = new System.Drawing.Font("Bahnschrift Condensed", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox5.Location = new System.Drawing.Point(25, 293);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.ReadOnly = true;
-            this.textBox5.Size = new System.Drawing.Size(274, 36);
-            this.textBox5.TabIndex = 11;
+            this.textbox_lastName.Font = new System.Drawing.Font("Bahnschrift Condensed", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textbox_lastName.Location = new System.Drawing.Point(25, 293);
+            this.textbox_lastName.Name = "textbox_lastName";
+            this.textbox_lastName.ReadOnly = true;
+            this.textbox_lastName.Size = new System.Drawing.Size(274, 36);
+            this.textbox_lastName.TabIndex = 11;
             // 
-            // textBox6
+            // textbox_course
             // 
-            this.textBox6.Font = new System.Drawing.Font("Bahnschrift Condensed", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox6.Location = new System.Drawing.Point(25, 383);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.ReadOnly = true;
-            this.textBox6.Size = new System.Drawing.Size(274, 36);
-            this.textBox6.TabIndex = 12;
+            this.textbox_course.Font = new System.Drawing.Font("Bahnschrift Condensed", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textbox_course.Location = new System.Drawing.Point(25, 383);
+            this.textbox_course.Name = "textbox_course";
+            this.textbox_course.ReadOnly = true;
+            this.textbox_course.Size = new System.Drawing.Size(274, 36);
+            this.textbox_course.TabIndex = 12;
             // 
-            // textBox7
+            // textbox_section
             // 
-            this.textBox7.Font = new System.Drawing.Font("Bahnschrift Condensed", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox7.Location = new System.Drawing.Point(25, 479);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.ReadOnly = true;
-            this.textBox7.Size = new System.Drawing.Size(274, 36);
-            this.textBox7.TabIndex = 13;
+            this.textbox_section.Font = new System.Drawing.Font("Bahnschrift Condensed", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textbox_section.Location = new System.Drawing.Point(25, 479);
+            this.textbox_section.Name = "textbox_section";
+            this.textbox_section.ReadOnly = true;
+            this.textbox_section.Size = new System.Drawing.Size(274, 36);
+            this.textbox_section.TabIndex = 13;
             // 
             // label7
             // 
@@ -201,19 +203,19 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
-            // button5
+            // search_student
             // 
-            this.button5.BackColor = System.Drawing.Color.White;
-            this.button5.FlatAppearance.BorderSize = 0;
-            this.button5.Font = new System.Drawing.Font("Bahnschrift Condensed", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(140)))), ((int)(((byte)(0)))));
-            this.button5.Location = new System.Drawing.Point(591, 53);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(115, 36);
-            this.button5.TabIndex = 21;
-            this.button5.Text = "SEARCH";
-            this.button5.UseVisualStyleBackColor = false;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
+            this.search_student.BackColor = System.Drawing.Color.White;
+            this.search_student.FlatAppearance.BorderSize = 0;
+            this.search_student.Font = new System.Drawing.Font("Bahnschrift Condensed", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.search_student.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(140)))), ((int)(((byte)(0)))));
+            this.search_student.Location = new System.Drawing.Point(591, 53);
+            this.search_student.Name = "search_student";
+            this.search_student.Size = new System.Drawing.Size(115, 36);
+            this.search_student.TabIndex = 21;
+            this.search_student.Text = "SEARCH";
+            this.search_student.UseVisualStyleBackColor = false;
+            this.search_student.Click += new System.EventHandler(this.button5_Click);
             // 
             // dataGridView1
             // 
@@ -230,14 +232,14 @@
             this.BackColor = System.Drawing.Color.White;
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.button5);
+            this.Controls.Add(this.search_student);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.textBox7);
-            this.Controls.Add(this.textBox6);
-            this.Controls.Add(this.textBox5);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.textbox_section);
+            this.Controls.Add(this.textbox_course);
+            this.Controls.Add(this.textbox_lastName);
+            this.Controls.Add(this.textbox_firstName);
+            this.Controls.Add(this.textbox_lrn);
+            this.Controls.Add(this.textbox_studNumber);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
@@ -265,14 +267,15 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.TextBox textBox7;
+        private System.Windows.Forms.TextBox textbox_studNumber;
+        private System.Windows.Forms.TextBox textbox_lrn;
+        private System.Windows.Forms.TextBox textbox_firstName;
+        private System.Windows.Forms.TextBox textbox_lastName;
+        private System.Windows.Forms.TextBox textbox_course;
+        private System.Windows.Forms.TextBox textbox_section;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button search_student;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Timer timer1;
     }
 }

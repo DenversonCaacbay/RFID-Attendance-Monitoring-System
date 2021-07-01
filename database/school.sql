@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 29, 2021 at 04:58 PM
+-- Generation Time: Jul 01, 2021 at 10:26 AM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 8.0.7
 
@@ -40,7 +40,9 @@ CREATE TABLE `admin` (
 
 INSERT INTO `admin` (`admin_id`, `username`, `password`, `admin_access`) VALUES
 (1, 'admin', 'admin', '1'),
-(2, 'user1', '123', '0');
+(2, 'user1', '123', '0'),
+(4, 'pocholo', '123', '0'),
+(5, 'denver123', '123', '0');
 
 -- --------------------------------------------------------
 
@@ -51,6 +53,7 @@ INSERT INTO `admin` (`admin_id`, `username`, `password`, `admin_access`) VALUES
 CREATE TABLE `log_record` (
   `log_id` int(15) NOT NULL,
   `student_number` int(15) NOT NULL,
+  `attendance` varchar(1) NOT NULL,
   `date_time` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -58,11 +61,15 @@ CREATE TABLE `log_record` (
 -- Dumping data for table `log_record`
 --
 
-INSERT INTO `log_record` (`log_id`, `student_number`, `date_time`) VALUES
-(3, 15, '2021-06-29 14:05:50'),
-(4, 16, '2021-06-29 14:05:50'),
-(5, 17, '2021-06-29 14:20:28'),
-(6, 15, '2021-06-29 14:21:41');
+INSERT INTO `log_record` (`log_id`, `student_number`, `attendance`, `date_time`) VALUES
+(26, 15, '1', '2021-07-01 08:24:53'),
+(27, 15, '0', '2021-07-01 08:24:54'),
+(28, 15, '1', '2021-07-01 08:24:55'),
+(29, 15, '0', '2021-07-01 08:24:56'),
+(30, 16, '1', '2021-07-01 08:25:12'),
+(31, 16, '0', '2021-07-01 08:25:13'),
+(32, 17, '1', '2021-07-01 08:25:44'),
+(33, 17, '0', '2021-07-01 08:25:45');
 
 -- --------------------------------------------------------
 
@@ -118,13 +125,13 @@ ALTER TABLE `student`
 -- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `admin_id` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `admin_id` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `log_record`
 --
 ALTER TABLE `log_record`
-  MODIFY `log_id` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `log_id` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT for table `student`

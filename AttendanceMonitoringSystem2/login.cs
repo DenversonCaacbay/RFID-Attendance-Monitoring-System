@@ -79,7 +79,7 @@ namespace AttendanceMonitoringSystem2
                     var user = DatabaseConnection.DatabaseClass.tableLogin.Rows[0][1];
                     admin_access = DatabaseConnection.DatabaseClass.tableLogin.Rows[0][3].ToString();
                     Console.WriteLine("Logged In User: "+user+" | Admin Access: "+admin_access);
-                    MessageBox.Show("Admin Log In Successfully", "Success");
+                    //MessageBox.Show("Admin Log In Successfully", "Success");
 
 
                     this.Hide();

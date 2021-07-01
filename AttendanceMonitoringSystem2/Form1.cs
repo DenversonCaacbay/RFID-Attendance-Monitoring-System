@@ -113,6 +113,7 @@ namespace AttendanceMonitoringSystem2
             attendance1.Show();
             manage1.Hide();
             record1.Hide();
+            accounts1.Hide();
 
             panel4.Show();
             panel5.Hide();
@@ -127,6 +128,7 @@ namespace AttendanceMonitoringSystem2
                 attendance1.Hide();
                 manage1.Show();
                 record1.Hide();
+                accounts1.Hide();
 
                 panel4.Hide();
                 panel5.Show();
@@ -186,6 +188,7 @@ namespace AttendanceMonitoringSystem2
             attendance1.Hide();
             manage1.Hide();
             record1.Show();
+            accounts1.Hide();
 
             panel4.Hide();
             panel5.Hide();
@@ -217,16 +220,23 @@ namespace AttendanceMonitoringSystem2
 
         private void iconButton5_Click(object sender, EventArgs e)
         {
-            accounts1.Show();
-            attendance1.Hide();
-            manage1.Hide();
-            record1.Hide();
+            if(login.admin_access == "1")
+            {
+                accounts1.Show();
+                attendance1.Hide();
+                manage1.Hide();
+                record1.Hide();
 
-            panel3.Show();
-            panel4.Hide();
-            panel5.Hide();
-            panel7.Hide();
-            panel6.Hide();
+                panel3.Show();
+                panel4.Hide();
+                panel5.Hide();
+                panel7.Hide();
+                panel6.Hide();
+            }
+            else
+            {
+                MessageBox.Show("You do not have the access!", "Alert");
+            }
         }
     }
 }

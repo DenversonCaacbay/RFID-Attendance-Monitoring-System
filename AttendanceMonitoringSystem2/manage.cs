@@ -80,7 +80,8 @@ namespace AttendanceMonitoringSystem2
 
             if (textbox_studNum.Text == "" || textbox_lrn.Text == "" || textbox_firstName.Text == "" || textbox_lastName.Text == "" || textbox_course.Text == "" || textbox_section.Text == "")
             {
-                MessageBox.Show("PLEASE COMPLETE THE FORM !");
+                DatabaseConnection.DatabaseClass.connect.Close();
+                MessageBox.Show("Please complete the Form!");
             }
             else if (reader.HasRows)
             {
