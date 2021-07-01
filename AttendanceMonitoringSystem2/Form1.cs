@@ -88,7 +88,6 @@ namespace AttendanceMonitoringSystem2
             attendance1.Show();
             manage1.Hide();
             record1.Hide();
-            accounts1.Hide();
 
             panel3.Hide();
             panel5.Hide();
@@ -113,8 +112,8 @@ namespace AttendanceMonitoringSystem2
             attendance1.Show();
             manage1.Hide();
             record1.Hide();
-            accounts1.Hide();
 
+            panel3.Hide();
             panel4.Show();
             panel5.Hide();
             panel7.Hide();
@@ -128,7 +127,6 @@ namespace AttendanceMonitoringSystem2
                 attendance1.Hide();
                 manage1.Show();
                 record1.Hide();
-                accounts1.Hide();
 
                 panel3.Hide();
                 panel4.Hide();
@@ -178,6 +176,7 @@ namespace AttendanceMonitoringSystem2
             attendance1.Hide();
             manage1.Hide();
 
+            panel3.Hide();
             panel4.Hide();
             panel5.Hide();
             panel7.Show();
@@ -189,8 +188,8 @@ namespace AttendanceMonitoringSystem2
             attendance1.Hide();
             manage1.Hide();
             record1.Show();
-            accounts1.Hide();
 
+            panel3.Hide();
             panel4.Hide();
             panel5.Hide();
             panel7.Show();
@@ -223,10 +222,12 @@ namespace AttendanceMonitoringSystem2
         {
             if(login.admin_access == "1")
             {
-                accounts1.Show();
                 attendance1.Hide();
                 manage1.Hide();
                 record1.Hide();
+
+                this.Hide();
+                new m_account().Show();
 
                 panel3.Show();
                 panel4.Hide();

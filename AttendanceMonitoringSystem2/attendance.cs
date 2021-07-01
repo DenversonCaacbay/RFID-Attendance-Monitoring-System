@@ -61,6 +61,8 @@ namespace AttendanceMonitoringSystem2
                 textbox_course.Text = Convert.ToString(DatabaseConnection.DatabaseClass.tableStudentSearch.Rows[0][4]);
                 textbox_section.Text = Convert.ToString(DatabaseConnection.DatabaseClass.tableStudentSearch.Rows[0][5]);
 
+                textbox_StudSearch.Text = string.Empty;
+
                 DataTable newTable = new DataTable();
                 DatabaseConnection.DatabaseClass.command = new MySqlCommand(DatabaseConnection.DatabaseClass.sql_check_attendance(textbox_studNumber.Text), DatabaseConnection.DatabaseClass.connect);
                 DatabaseConnection.DatabaseClass.adapter.SelectCommand = DatabaseConnection.DatabaseClass.command;

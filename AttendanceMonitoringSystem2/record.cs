@@ -44,9 +44,10 @@ namespace AttendanceMonitoringSystem2
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (dataGridView1.Rows.Count > 0)
+            DialogResult dr = MessageBox.Show("Do you want to Print the Records.", "Message", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (dr == DialogResult.Yes && dataGridView1.Rows.Count > 0)
             {
-
+                
                 Microsoft.Office.Interop.Excel.Application xcelApp = new Microsoft.Office.Interop.Excel.Application();
                 xcelApp.Application.Workbooks.Add(Type.Missing);
 

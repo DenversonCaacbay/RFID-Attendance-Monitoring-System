@@ -59,7 +59,10 @@
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
+            this.button6 = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridView1
@@ -71,9 +74,10 @@
             dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
             this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.WindowText;
@@ -112,7 +116,7 @@
             dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Black;
             this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(466, 349);
+            this.dataGridView1.Size = new System.Drawing.Size(711, 520);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
@@ -124,7 +128,6 @@
             this.Column2.HeaderText = "Student Number";
             this.Column2.Name = "Column2";
             this.Column2.ReadOnly = true;
-            this.Column2.Width = 150;
             // 
             // Column3
             // 
@@ -132,7 +135,6 @@
             this.Column3.HeaderText = "LRN";
             this.Column3.Name = "Column3";
             this.Column3.ReadOnly = true;
-            this.Column3.Width = 150;
             // 
             // Column4
             // 
@@ -167,7 +169,7 @@
             this.textbox_studSearch.Font = new System.Drawing.Font("Bahnschrift Condensed", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textbox_studSearch.Location = new System.Drawing.Point(263, 45);
             this.textbox_studSearch.Name = "textbox_studSearch";
-            this.textbox_studSearch.Size = new System.Drawing.Size(466, 36);
+            this.textbox_studSearch.Size = new System.Drawing.Size(447, 36);
             this.textbox_studSearch.TabIndex = 1;
             this.textbox_studSearch.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
@@ -187,7 +189,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Bahnschrift Condensed", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(140)))), ((int)(((byte)(0)))));
-            this.label1.Location = new System.Drawing.Point(17, 11);
+            this.label1.Location = new System.Drawing.Point(17, 189);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(142, 29);
             this.label1.TabIndex = 4;
@@ -198,7 +200,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Bahnschrift Condensed", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(140)))), ((int)(((byte)(0)))));
-            this.label3.Location = new System.Drawing.Point(17, 89);
+            this.label3.Location = new System.Drawing.Point(17, 267);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(44, 29);
             this.label3.TabIndex = 5;
@@ -209,7 +211,7 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Bahnschrift Condensed", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(140)))), ((int)(((byte)(0)))));
-            this.label4.Location = new System.Drawing.Point(17, 178);
+            this.label4.Location = new System.Drawing.Point(17, 356);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(100, 29);
             this.label4.TabIndex = 6;
@@ -220,7 +222,7 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Bahnschrift Condensed", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(140)))), ((int)(((byte)(0)))));
-            this.label5.Location = new System.Drawing.Point(17, 265);
+            this.label5.Location = new System.Drawing.Point(17, 443);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(97, 29);
             this.label5.TabIndex = 7;
@@ -231,7 +233,7 @@
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Bahnschrift Condensed", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(140)))), ((int)(((byte)(0)))));
-            this.label6.Location = new System.Drawing.Point(17, 352);
+            this.label6.Location = new System.Drawing.Point(17, 530);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(68, 29);
             this.label6.TabIndex = 8;
@@ -242,7 +244,7 @@
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Bahnschrift Condensed", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(140)))), ((int)(((byte)(0)))));
-            this.label7.Location = new System.Drawing.Point(17, 435);
+            this.label7.Location = new System.Drawing.Point(17, 613);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(71, 29);
             this.label7.TabIndex = 9;
@@ -251,7 +253,7 @@
             // textbox_studNum
             // 
             this.textbox_studNum.Font = new System.Drawing.Font("Bahnschrift Condensed", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textbox_studNum.Location = new System.Drawing.Point(22, 43);
+            this.textbox_studNum.Location = new System.Drawing.Point(22, 221);
             this.textbox_studNum.Name = "textbox_studNum";
             this.textbox_studNum.Size = new System.Drawing.Size(214, 36);
             this.textbox_studNum.TabIndex = 10;
@@ -259,7 +261,7 @@
             // textbox_lrn
             // 
             this.textbox_lrn.Font = new System.Drawing.Font("Bahnschrift Condensed", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textbox_lrn.Location = new System.Drawing.Point(22, 123);
+            this.textbox_lrn.Location = new System.Drawing.Point(22, 301);
             this.textbox_lrn.Name = "textbox_lrn";
             this.textbox_lrn.Size = new System.Drawing.Size(214, 36);
             this.textbox_lrn.TabIndex = 11;
@@ -267,7 +269,7 @@
             // textbox_firstName
             // 
             this.textbox_firstName.Font = new System.Drawing.Font("Bahnschrift Condensed", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textbox_firstName.Location = new System.Drawing.Point(22, 211);
+            this.textbox_firstName.Location = new System.Drawing.Point(22, 389);
             this.textbox_firstName.Name = "textbox_firstName";
             this.textbox_firstName.Size = new System.Drawing.Size(214, 36);
             this.textbox_firstName.TabIndex = 12;
@@ -275,7 +277,7 @@
             // textbox_lastName
             // 
             this.textbox_lastName.Font = new System.Drawing.Font("Bahnschrift Condensed", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textbox_lastName.Location = new System.Drawing.Point(22, 299);
+            this.textbox_lastName.Location = new System.Drawing.Point(22, 477);
             this.textbox_lastName.Name = "textbox_lastName";
             this.textbox_lastName.Size = new System.Drawing.Size(214, 36);
             this.textbox_lastName.TabIndex = 13;
@@ -283,7 +285,7 @@
             // textbox_course
             // 
             this.textbox_course.Font = new System.Drawing.Font("Bahnschrift Condensed", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textbox_course.Location = new System.Drawing.Point(22, 386);
+            this.textbox_course.Location = new System.Drawing.Point(22, 564);
             this.textbox_course.Name = "textbox_course";
             this.textbox_course.Size = new System.Drawing.Size(214, 36);
             this.textbox_course.TabIndex = 14;
@@ -291,7 +293,7 @@
             // textbox_section
             // 
             this.textbox_section.Font = new System.Drawing.Font("Bahnschrift Condensed", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textbox_section.Location = new System.Drawing.Point(22, 467);
+            this.textbox_section.Location = new System.Drawing.Point(22, 645);
             this.textbox_section.Name = "textbox_section";
             this.textbox_section.Size = new System.Drawing.Size(214, 36);
             this.textbox_section.TabIndex = 15;
@@ -301,7 +303,7 @@
             this.button1.BackColor = System.Drawing.Color.White;
             this.button1.Font = new System.Drawing.Font("Bahnschrift Condensed", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(140)))), ((int)(((byte)(0)))));
-            this.button1.Location = new System.Drawing.Point(266, 466);
+            this.button1.Location = new System.Drawing.Point(360, 632);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(103, 44);
             this.button1.TabIndex = 16;
@@ -315,7 +317,7 @@
             this.button2.Enabled = false;
             this.button2.Font = new System.Drawing.Font("Bahnschrift Condensed", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(140)))), ((int)(((byte)(0)))));
-            this.button2.Location = new System.Drawing.Point(385, 466);
+            this.button2.Location = new System.Drawing.Point(503, 632);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(103, 44);
             this.button2.TabIndex = 17;
@@ -329,7 +331,7 @@
             this.button3.Enabled = false;
             this.button3.Font = new System.Drawing.Font("Bahnschrift Condensed", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(140)))), ((int)(((byte)(0)))));
-            this.button3.Location = new System.Drawing.Point(504, 466);
+            this.button3.Location = new System.Drawing.Point(646, 632);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(103, 44);
             this.button3.TabIndex = 18;
@@ -342,7 +344,7 @@
             this.button4.BackColor = System.Drawing.Color.White;
             this.button4.Font = new System.Drawing.Font("Bahnschrift Condensed", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(140)))), ((int)(((byte)(0)))));
-            this.button4.Location = new System.Drawing.Point(623, 467);
+            this.button4.Location = new System.Drawing.Point(789, 633);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(103, 44);
             this.button4.TabIndex = 19;
@@ -356,7 +358,7 @@
             this.button5.FlatAppearance.BorderSize = 0;
             this.button5.Font = new System.Drawing.Font("Bahnschrift Condensed", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(140)))), ((int)(((byte)(0)))));
-            this.button5.Location = new System.Drawing.Point(569, 45);
+            this.button5.Location = new System.Drawing.Point(716, 45);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(160, 36);
             this.button5.TabIndex = 20;
@@ -364,11 +366,35 @@
             this.button5.UseVisualStyleBackColor = false;
             this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
+            // button6
+            // 
+            this.button6.BackColor = System.Drawing.Color.White;
+            this.button6.Font = new System.Drawing.Font("Bahnschrift Condensed", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(140)))), ((int)(((byte)(0)))));
+            this.button6.Location = new System.Drawing.Point(22, 135);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(214, 44);
+            this.button6.TabIndex = 21;
+            this.button6.Text = "BROWSE";
+            this.button6.UseVisualStyleBackColor = false;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::AttendanceMonitoringSystem2.Properties.Resources.Student;
+            this.pictureBox1.Location = new System.Drawing.Point(58, 11);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(137, 118);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 22;
+            this.pictureBox1.TabStop = false;
+            // 
             // manage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.button6);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
@@ -390,9 +416,10 @@
             this.Controls.Add(this.textbox_studSearch);
             this.Controls.Add(this.dataGridView1);
             this.Name = "manage";
-            this.Size = new System.Drawing.Size(756, 534);
+            this.Size = new System.Drawing.Size(1000, 704);
             this.Load += new System.EventHandler(this.manage_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -425,5 +452,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

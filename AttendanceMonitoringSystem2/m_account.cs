@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Drawing;
 using System.Data;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,14 +11,15 @@ using MySql.Data.MySqlClient;
 
 namespace AttendanceMonitoringSystem2
 {
-    public partial class accounts : UserControl
+    public partial class m_account : Form
     {
-        public accounts()
+       
+
+        public m_account()
         {
             InitializeComponent();
             DatabaseConnection.DatabaseClass.accountSetup();
         }
-
         public void refreshForm()
         {
             DatabaseConnection.DatabaseClass.connect.Close();
@@ -38,8 +39,22 @@ namespace AttendanceMonitoringSystem2
                 MessageBox.Show(ex.Message);
             }
         }
+        private void m_account_Load(object sender, EventArgs e)
+        {
+            refreshForm();
+        }
 
-        //new admin
+        private void btn_cancel_Click(object sender, EventArgs e)
+        {
+           
+            }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            new Form1().Show();
+        }
+
         private void btn_admin_new_Click(object sender, EventArgs e)
         {
             DatabaseConnection.DatabaseClass.connect.Open();
@@ -79,11 +94,9 @@ namespace AttendanceMonitoringSystem2
             }
         }
 
-        private void accounts_Load(object sender, EventArgs e)
+        private void btn_admin_delete_Click(object sender, EventArgs e)
         {
-            refreshForm();
+
         }
-
     }
-
 }

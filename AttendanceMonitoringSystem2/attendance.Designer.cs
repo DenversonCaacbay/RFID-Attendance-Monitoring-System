@@ -54,9 +54,9 @@
             // textbox_StudSearch
             // 
             this.textbox_StudSearch.Font = new System.Drawing.Font("Bahnschrift Condensed", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textbox_StudSearch.Location = new System.Drawing.Point(347, 53);
+            this.textbox_StudSearch.Location = new System.Drawing.Point(442, 89);
             this.textbox_StudSearch.Name = "textbox_StudSearch";
-            this.textbox_StudSearch.Size = new System.Drawing.Size(359, 36);
+            this.textbox_StudSearch.Size = new System.Drawing.Size(451, 36);
             this.textbox_StudSearch.TabIndex = 1;
             // 
             // label1
@@ -64,7 +64,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Bahnschrift Condensed", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(140)))), ((int)(((byte)(0)))));
-            this.label1.Location = new System.Drawing.Point(347, 21);
+            this.label1.Location = new System.Drawing.Point(442, 57);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(212, 29);
             this.label1.TabIndex = 2;
@@ -75,7 +75,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Bahnschrift Condensed", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(140)))), ((int)(((byte)(0)))));
-            this.label2.Location = new System.Drawing.Point(20, 4);
+            this.label2.Location = new System.Drawing.Point(71, 57);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(151, 29);
             this.label2.TabIndex = 3;
@@ -87,7 +87,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Bahnschrift Condensed", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(140)))), ((int)(((byte)(0)))));
-            this.label3.Location = new System.Drawing.Point(20, 86);
+            this.label3.Location = new System.Drawing.Point(71, 139);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(53, 29);
             this.label3.TabIndex = 4;
@@ -98,7 +98,7 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Bahnschrift Condensed", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(140)))), ((int)(((byte)(0)))));
-            this.label4.Location = new System.Drawing.Point(20, 174);
+            this.label4.Location = new System.Drawing.Point(71, 227);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(109, 29);
             this.label4.TabIndex = 5;
@@ -109,7 +109,7 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Bahnschrift Condensed", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(140)))), ((int)(((byte)(0)))));
-            this.label5.Location = new System.Drawing.Point(20, 261);
+            this.label5.Location = new System.Drawing.Point(71, 314);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(106, 29);
             this.label5.TabIndex = 6;
@@ -120,7 +120,7 @@
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Bahnschrift Condensed", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(140)))), ((int)(((byte)(0)))));
-            this.label6.Location = new System.Drawing.Point(25, 351);
+            this.label6.Location = new System.Drawing.Point(76, 404);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(77, 29);
             this.label6.TabIndex = 7;
@@ -129,7 +129,7 @@
             // textbox_studNumber
             // 
             this.textbox_studNumber.Font = new System.Drawing.Font("Bahnschrift Condensed", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textbox_studNumber.Location = new System.Drawing.Point(25, 36);
+            this.textbox_studNumber.Location = new System.Drawing.Point(76, 89);
             this.textbox_studNumber.Name = "textbox_studNumber";
             this.textbox_studNumber.ReadOnly = true;
             this.textbox_studNumber.Size = new System.Drawing.Size(274, 36);
@@ -138,7 +138,7 @@
             // textbox_lrn
             // 
             this.textbox_lrn.Font = new System.Drawing.Font("Bahnschrift Condensed", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textbox_lrn.Location = new System.Drawing.Point(25, 118);
+            this.textbox_lrn.Location = new System.Drawing.Point(76, 171);
             this.textbox_lrn.Name = "textbox_lrn";
             this.textbox_lrn.ReadOnly = true;
             this.textbox_lrn.Size = new System.Drawing.Size(274, 36);
@@ -147,7 +147,7 @@
             // textbox_firstName
             // 
             this.textbox_firstName.Font = new System.Drawing.Font("Bahnschrift Condensed", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textbox_firstName.Location = new System.Drawing.Point(25, 206);
+            this.textbox_firstName.Location = new System.Drawing.Point(76, 259);
             this.textbox_firstName.Name = "textbox_firstName";
             this.textbox_firstName.ReadOnly = true;
             this.textbox_firstName.Size = new System.Drawing.Size(274, 36);
@@ -157,7 +157,7 @@
             // textbox_lastName
             // 
             this.textbox_lastName.Font = new System.Drawing.Font("Bahnschrift Condensed", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textbox_lastName.Location = new System.Drawing.Point(25, 293);
+            this.textbox_lastName.Location = new System.Drawing.Point(76, 346);
             this.textbox_lastName.Name = "textbox_lastName";
             this.textbox_lastName.ReadOnly = true;
             this.textbox_lastName.Size = new System.Drawing.Size(274, 36);
@@ -166,7 +166,7 @@
             // textbox_course
             // 
             this.textbox_course.Font = new System.Drawing.Font("Bahnschrift Condensed", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textbox_course.Location = new System.Drawing.Point(25, 383);
+            this.textbox_course.Location = new System.Drawing.Point(76, 436);
             this.textbox_course.Name = "textbox_course";
             this.textbox_course.ReadOnly = true;
             this.textbox_course.Size = new System.Drawing.Size(274, 36);
@@ -175,7 +175,7 @@
             // textbox_section
             // 
             this.textbox_section.Font = new System.Drawing.Font("Bahnschrift Condensed", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textbox_section.Location = new System.Drawing.Point(25, 479);
+            this.textbox_section.Location = new System.Drawing.Point(76, 532);
             this.textbox_section.Name = "textbox_section";
             this.textbox_section.ReadOnly = true;
             this.textbox_section.Size = new System.Drawing.Size(274, 36);
@@ -186,7 +186,7 @@
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Bahnschrift Condensed", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(140)))), ((int)(((byte)(0)))));
-            this.label7.Location = new System.Drawing.Point(25, 447);
+            this.label7.Location = new System.Drawing.Point(76, 500);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(71, 29);
             this.label7.TabIndex = 14;
@@ -196,9 +196,9 @@
             // 
             this.pictureBox1.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.pictureBox1.Image = global::AttendanceMonitoringSystem2.Properties.Resources.Student;
-            this.pictureBox1.Location = new System.Drawing.Point(347, 118);
+            this.pictureBox1.Location = new System.Drawing.Point(442, 154);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(359, 330);
+            this.pictureBox1.Size = new System.Drawing.Size(451, 395);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
@@ -209,7 +209,7 @@
             this.search_student.FlatAppearance.BorderSize = 0;
             this.search_student.Font = new System.Drawing.Font("Bahnschrift Condensed", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.search_student.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(140)))), ((int)(((byte)(0)))));
-            this.search_student.Location = new System.Drawing.Point(591, 53);
+            this.search_student.Location = new System.Drawing.Point(778, 89);
             this.search_student.Name = "search_student";
             this.search_student.Size = new System.Drawing.Size(115, 36);
             this.search_student.TabIndex = 21;
@@ -220,7 +220,7 @@
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(385, 197);
+            this.dataGridView1.Location = new System.Drawing.Point(480, 233);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(240, 150);
             this.dataGridView1.TabIndex = 22;
@@ -248,7 +248,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textbox_StudSearch);
             this.Name = "attendance";
-            this.Size = new System.Drawing.Size(762, 533);
+            this.Size = new System.Drawing.Size(1000, 704);
             this.Load += new System.EventHandler(this.attendance_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
