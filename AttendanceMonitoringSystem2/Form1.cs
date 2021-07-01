@@ -130,6 +130,7 @@ namespace AttendanceMonitoringSystem2
                 record1.Hide();
                 accounts1.Hide();
 
+                panel3.Hide();
                 panel4.Hide();
                 panel5.Show();
                 panel7.Hide();
