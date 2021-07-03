@@ -92,7 +92,7 @@ namespace AttendanceMonitoringSystem2
             panel3.Hide();
             panel5.Hide();
             panel7.Hide();
-            panel6.Hide();
+      
 
 
         }
@@ -117,7 +117,7 @@ namespace AttendanceMonitoringSystem2
             panel4.Show();
             panel5.Hide();
             panel7.Hide();
-            panel6.Hide();
+         
         }
 
         private void iconButton2_Click(object sender, EventArgs e)
@@ -132,7 +132,7 @@ namespace AttendanceMonitoringSystem2
                 panel4.Hide();
                 panel5.Show();
                 panel7.Hide();
-                panel6.Hide();
+              
             }
             else
             {
@@ -157,7 +157,7 @@ namespace AttendanceMonitoringSystem2
 
         private void iconButton3_Click(object sender, EventArgs e)
         {
-            panel6.Show();
+
             DialogResult dr = MessageBox.Show("Do you want to Log Out.", "Message", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (dr == DialogResult.Yes)
             {
@@ -180,7 +180,7 @@ namespace AttendanceMonitoringSystem2
             panel4.Hide();
             panel5.Hide();
             panel7.Show();
-            panel6.Hide();
+          
         }
 
         private void iconButton4_Click_1(object sender, EventArgs e)
@@ -193,7 +193,7 @@ namespace AttendanceMonitoringSystem2
             panel4.Hide();
             panel5.Hide();
             panel7.Show();
-            panel6.Hide();
+        
         }
 
         private void manage1_Load(object sender, EventArgs e)
@@ -233,7 +233,6 @@ namespace AttendanceMonitoringSystem2
                 panel4.Hide();
                 panel5.Hide();
                 panel7.Hide();
-                panel6.Hide();
             }
             else
             {

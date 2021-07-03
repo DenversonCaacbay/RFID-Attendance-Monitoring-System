@@ -208,7 +208,8 @@ namespace AttendanceMonitoringSystem2
                 textbox_lastName.Text = String.Empty;
                 textbox_course.Text = String.Empty;
                 textbox_section.Text = String.Empty;
-
+                Image image = Image.FromFile("Student.jpg");
+                pictureBox1.Image = image;
                 button1.Enabled = true;
                 button2.Enabled = false;
                 button3.Enabled = false;
@@ -264,6 +265,16 @@ namespace AttendanceMonitoringSystem2
 
 
 
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+           // files(*.*) | *.* "'
+            using (OpenFileDialog ofd = new OpenFileDialog() { Filter ="Image files (*.jpg;*.jpeg)|*.jpg;*.jpeg", Multiselect = false})
+                if (ofd.ShowDialog() == DialogResult.OK)
+                {
+                    pictureBox1.Image = Image.FromFile(ofd.FileName);
+                }
         }
     }
 }

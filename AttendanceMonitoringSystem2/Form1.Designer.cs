@@ -35,7 +35,6 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.iconButton5 = new FontAwesome.Sharp.IconButton();
-            this.panel6 = new System.Windows.Forms.Panel();
             this.iconButton3 = new FontAwesome.Sharp.IconButton();
             this.panel7 = new System.Windows.Forms.Panel();
             this.iconButton4 = new FontAwesome.Sharp.IconButton();
@@ -49,9 +48,9 @@
             this.label8 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.record1 = new AttendanceMonitoringSystem2.record();
             this.manage1 = new AttendanceMonitoringSystem2.manage();
             this.attendance1 = new AttendanceMonitoringSystem2.attendance();
-            this.record1 = new AttendanceMonitoringSystem2.record();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -64,7 +63,6 @@
             this.panel1.Controls.Add(this.panel3);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.iconButton5);
-            this.panel1.Controls.Add(this.panel6);
             this.panel1.Controls.Add(this.iconButton3);
             this.panel1.Controls.Add(this.panel7);
             this.panel1.Controls.Add(this.iconButton4);
@@ -125,27 +123,20 @@
             this.iconButton5.UseVisualStyleBackColor = true;
             this.iconButton5.Click += new System.EventHandler(this.iconButton5_Click);
             // 
-            // panel6
-            // 
-            this.panel6.BackColor = System.Drawing.Color.White;
-            this.panel6.Location = new System.Drawing.Point(3, 530);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(14, 59);
-            this.panel6.TabIndex = 9;
-            // 
             // iconButton3
             // 
+            this.iconButton3.BackColor = System.Drawing.Color.White;
             this.iconButton3.FlatAppearance.BorderSize = 0;
-            this.iconButton3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.iconButton3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(140)))), ((int)(((byte)(0)))));
             this.iconButton3.IconChar = FontAwesome.Sharp.IconChar.None;
             this.iconButton3.IconColor = System.Drawing.Color.Black;
             this.iconButton3.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton3.Location = new System.Drawing.Point(0, 530);
+            this.iconButton3.Location = new System.Drawing.Point(35, 576);
             this.iconButton3.Name = "iconButton3";
-            this.iconButton3.Size = new System.Drawing.Size(260, 59);
+            this.iconButton3.Size = new System.Drawing.Size(191, 44);
             this.iconButton3.TabIndex = 9;
             this.iconButton3.Text = "LOG OUT";
-            this.iconButton3.UseVisualStyleBackColor = true;
+            this.iconButton3.UseVisualStyleBackColor = false;
             this.iconButton3.Click += new System.EventHandler(this.iconButton3_Click);
             // 
             // panel7
@@ -276,6 +267,14 @@
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // record1
+            // 
+            this.record1.BackColor = System.Drawing.Color.White;
+            this.record1.Location = new System.Drawing.Point(254, 50);
+            this.record1.Name = "record1";
+            this.record1.Size = new System.Drawing.Size(999, 682);
+            this.record1.TabIndex = 20;
+            // 
             // manage1
             // 
             this.manage1.BackColor = System.Drawing.Color.White;
@@ -292,14 +291,6 @@
             this.attendance1.Size = new System.Drawing.Size(981, 671);
             this.attendance1.TabIndex = 1;
             this.attendance1.Load += new System.EventHandler(this.attendance1_Load);
-            // 
-            // record1
-            // 
-            this.record1.BackColor = System.Drawing.Color.White;
-            this.record1.Location = new System.Drawing.Point(254, 50);
-            this.record1.Name = "record1";
-            this.record1.Size = new System.Drawing.Size(999, 682);
-            this.record1.TabIndex = 20;
             // 
             // Form1
             // 
@@ -337,7 +328,6 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Panel panel5;
-        private System.Windows.Forms.Panel panel6;
         private FontAwesome.Sharp.IconButton iconButton3;
         private System.Windows.Forms.Panel panel7;
         private FontAwesome.Sharp.IconButton iconButton4;
