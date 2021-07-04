@@ -15,7 +15,7 @@ namespace AttendanceMonitoringSystem2
 {
     public partial class manage : UserControl
     {
-
+        string imgLoc = "";
         public void refreshForm()
         {
             DatabaseConnection.DatabaseClass.connect.Close();
@@ -24,7 +24,7 @@ namespace AttendanceMonitoringSystem2
                 DatabaseConnection.DatabaseClass.tableStudent.Clear();
                 DatabaseConnection.DatabaseClass.connect.Open();
                 DatabaseConnection.DatabaseClass.command = new MySqlCommand
-                    (DatabaseConnection.DatabaseClass.sql_showStudent, DatabaseConnection.DatabaseClass.connect);
+                (DatabaseConnection.DatabaseClass.sql_showStudent, DatabaseConnection.DatabaseClass.connect);
                 DatabaseConnection.DatabaseClass.adapter.SelectCommand = DatabaseConnection.DatabaseClass.command;
                 DatabaseConnection.DatabaseClass.adapter.Fill(DatabaseConnection.DatabaseClass.tableStudent);
 
@@ -74,6 +74,7 @@ namespace AttendanceMonitoringSystem2
         //create student
         private void button1_Click(object sender, EventArgs e)
         {
+
             DatabaseConnection.DatabaseClass.connect.Open();
             DatabaseConnection.DatabaseClass.command = new MySqlCommand(DatabaseConnection.DatabaseClass.sql_checker_student(textbox_firstName.Text, textbox_lastName.Text), DatabaseConnection.DatabaseClass.connect);
             MySqlDataReader reader;
@@ -94,6 +95,12 @@ namespace AttendanceMonitoringSystem2
                 DatabaseConnection.DatabaseClass.connect.Close();
                 try
                 {
+                    /*
+                    byte[] img = null;
+                    FileStream fs = new FileStream(imgLoc, FileMode.Open, FileAccess.Read);
+                    BinaryReader br = new BinaryReader(fs);
+                    img = br.ReadBytes((int)fs.Length);
+                    */
                     DatabaseConnection.DatabaseClass.connect.Open();
                     DatabaseConnection.DatabaseClass.command = new MySqlCommand(DatabaseConnection.DatabaseClass.sql_insert_student(textbox_studNum.Text,
                         textbox_lrn.Text, textbox_firstName.Text, textbox_lastName.Text, textbox_course.Text, textbox_section.Text), DatabaseConnection.DatabaseClass.connect);
@@ -285,12 +292,24 @@ namespace AttendanceMonitoringSystem2
 
         private void button6_Click(object sender, EventArgs e)
         {
-           // files(*.*) | *.* "'
-            using (OpenFileDialog ofd = new OpenFileDialog() { Filter ="Image files (*.jpg;*.jpeg;*.png)|*.jpg;*.jpeg;*.png", Multiselect = false})
+            // files(*.*) | *.* "'
+            try
+            {
+                OpenFileDialog ofd = new OpenFileDialog();
+                ofd.Filter = "JPG Files (*.jpg;*.jpeg;*.png)|*.jpg;*.jpeg;*.png";
+                ofd.Title = "Select Student Picture";
+                
                 if (ofd.ShowDialog() == DialogResult.OK)
-                {
-                    pictureBox1.Image = Image.FromFile(ofd.FileName);
-                }
+                    {
+                    //pictureBox1.Image = Image.FromFile(ofd.FileName);
+                    imgLoc = ofd.FileName.ToString();
+                    pictureBox1.ImageLocation = imgLoc;
+                    }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

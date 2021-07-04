@@ -15,6 +15,8 @@ namespace AttendanceMonitoringSystem2.DatabaseConnection
 
         public static string showAll = "SELECT * FROM student";
 
+        public static string showAll1 = "SELECT student_number,lrn,first_name,last_name,course,section FROM student";
+
         public static string showLogs = "SELECT "+
                                             "log_record.log_id,"+
                                             "log_record.student_number,"+
@@ -28,7 +30,7 @@ namespace AttendanceMonitoringSystem2.DatabaseConnection
                                             "FROM log_record JOIN student "+
                                             "ON log_record.student_number = student.student_number";
 
-        public static string sql_showStudent = DatabaseConnection.DatabaseClass.showAll;
+        public static string sql_showStudent = DatabaseConnection.DatabaseClass.showAll1;
 
         public static string showAdmin = "SELECT * FROM admin";
 
@@ -37,7 +39,7 @@ namespace AttendanceMonitoringSystem2.DatabaseConnection
         //INSERT
         public static string sql_insert_student(string student_number ,string lrn,string firstName, string lastName, string course, string section)
         {
-            return "INSERT INTO student(student_number ,lrn, first_name, last_name, course, section) VALUES ('" + student_number + "','" + lrn+"','"+firstName+"','"+lastName+"','"+course+"','"+section+"')";
+            return "INSERT INTO student(student_number ,lrn, first_name, last_name, course, section) VALUES ('" + student_number + "','" + lrn+"','"+firstName+"','"+lastName+"','"+course+"','"+section+ "')";
         }
         //UPDATE
         public static string sql_update_student(string lrn, string firstName, string lastName, string course, string section, string ID)
