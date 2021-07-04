@@ -220,7 +220,7 @@
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(480, 233);
+            this.dataGridView1.Location = new System.Drawing.Point(556, 206);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(240, 150);
             this.dataGridView1.TabIndex = 22;
@@ -230,8 +230,6 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.search_student);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.textbox_section);
@@ -247,6 +245,8 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textbox_StudSearch);
+            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.dataGridView1);
             this.Name = "attendance";
             this.Size = new System.Drawing.Size(1000, 704);
             this.Load += new System.EventHandler(this.attendance_Load);
