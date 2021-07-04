@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using MySql.Data.MySqlClient;
+using System.IO;
 
 namespace AttendanceMonitoringSystem2
 {
@@ -69,7 +70,7 @@ namespace AttendanceMonitoringSystem2
         {
 
         }
-
+        
         //create student
         private void button1_Click(object sender, EventArgs e)
         {
@@ -78,7 +79,7 @@ namespace AttendanceMonitoringSystem2
             MySqlDataReader reader;
             reader = DatabaseConnection.DatabaseClass.command.ExecuteReader();
 
-            if (textbox_studNum.Text == "" || textbox_lrn.Text == "" || textbox_firstName.Text == "" || textbox_lastName.Text == "" || textbox_course.Text == "" || textbox_section.Text == "")
+            if (textbox_lrn.Text == "" || textbox_firstName.Text == "" || textbox_lastName.Text == "" || textbox_course.Text == "" || textbox_section.Text == "")
             {
                 DatabaseConnection.DatabaseClass.connect.Close();
                 MessageBox.Show("Please complete the Form!");
@@ -188,7 +189,22 @@ namespace AttendanceMonitoringSystem2
             textbox_course.Text = dataGridView1.Rows[e.RowIndex].Cells[4].Value.ToString();
             textbox_section.Text = dataGridView1.Rows[e.RowIndex].Cells[5].Value.ToString();
 
-            
+            //pic
+            byte[] img = (byte[])dataGridView1.Rows[e.RowIndex].Cells[6].Value;
+
+            //check if empty pic
+            if (img.Length <= 0 || img == null)
+            {
+                pictureBox1.Image = Image.FromFile("Student.jpg");
+            }
+            else
+            {
+                MemoryStream ms = new MemoryStream(img);
+                pictureBox1.Image = Image.FromStream(ms);
+                //DatabaseConnection.DatabaseClass.adapter.Dispose();
+            }
+
+
             button2.Enabled = Enabled;
             button3.Enabled = Enabled;
             button1.Enabled = false;
@@ -270,7 +286,7 @@ namespace AttendanceMonitoringSystem2
         private void button6_Click(object sender, EventArgs e)
         {
            // files(*.*) | *.* "'
-            using (OpenFileDialog ofd = new OpenFileDialog() { Filter ="Image files (*.jpg;*.jpeg)|*.jpg;*.jpeg", Multiselect = false})
+            using (OpenFileDialog ofd = new OpenFileDialog() { Filter ="Image files (*.jpg;*.jpeg;*.png)|*.jpg;*.jpeg;*.png", Multiselect = false})
                 if (ofd.ShowDialog() == DialogResult.OK)
                 {
                     pictureBox1.Image = Image.FromFile(ofd.FileName);
