@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
+using System.IO;
 
 namespace AttendanceMonitoringSystem2
 {
@@ -60,6 +61,21 @@ namespace AttendanceMonitoringSystem2
                 textbox_lastName.Text = Convert.ToString(DatabaseConnection.DatabaseClass.tableStudentSearch.Rows[0][3]);
                 textbox_course.Text = Convert.ToString(DatabaseConnection.DatabaseClass.tableStudentSearch.Rows[0][4]);
                 textbox_section.Text = Convert.ToString(DatabaseConnection.DatabaseClass.tableStudentSearch.Rows[0][5]);
+
+                //pic
+                byte[] img = (byte[])DatabaseConnection.DatabaseClass.tableStudentSearch.Rows[0][6];
+
+                //check if empty pic
+                if (img.Length <= 0 || img == null)
+                {
+                    pictureBox1.Image = Image.FromFile("Student.jpg");
+                }
+                else
+                {
+                    MemoryStream ms = new MemoryStream(img);
+                    pictureBox1.Image = Image.FromStream(ms);
+                    //DatabaseConnection.DatabaseClass.adapter.Dispose();
+                }
 
                 textbox_StudSearch.Text = string.Empty;
 

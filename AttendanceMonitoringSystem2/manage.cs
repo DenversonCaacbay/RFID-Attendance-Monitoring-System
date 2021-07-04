@@ -70,7 +70,7 @@ namespace AttendanceMonitoringSystem2
         {
 
         }
-        
+
         //create student
         private void button1_Click(object sender, EventArgs e)
         {
@@ -94,12 +94,21 @@ namespace AttendanceMonitoringSystem2
                 DatabaseConnection.DatabaseClass.connect.Close();
                 try
                 {
+
+                    byte[] image = null;
+                    FileStream streem = new FileStream(imgLoc, FileMode.Open, FileAccess.Read);
+                    BinaryReader brs = new BinaryReader(streem);
+                    image = brs.ReadBytes((int)streem.Length);
+                    MySqlCommand cmd;
+
                     DatabaseConnection.DatabaseClass.connect.Open();
-                    DatabaseConnection.DatabaseClass.command = new MySqlCommand(DatabaseConnection.DatabaseClass.sql_insert_student(textbox_studNum.Text,
-                        textbox_lrn.Text, textbox_firstName.Text, textbox_lastName.Text, textbox_course.Text, textbox_section.Text), DatabaseConnection.DatabaseClass.connect);
-                    MySqlDataReader reader2;
-                    reader2 = DatabaseConnection.DatabaseClass.command.ExecuteReader();
+                    string query = "INSERT INTO student(lrn, first_name, last_name, course, section, pic) VALUES ('" + textbox_lrn.Text + "','" + textbox_firstName.Text + "','" + textbox_lastName.Text + "','" + textbox_course.Text + "','" + textbox_section.Text + "', @image)";
+                    cmd = new MySqlCommand(query, DatabaseConnection.DatabaseClass.connect);
+                    cmd.Parameters.Add(new MySqlParameter("@image", image));
+                    int n = cmd.ExecuteNonQuery();
+
                     MessageBox.Show("Student Created!");
+
                     //for clearing
                     textbox_studNum.Text = String.Empty;
                     textbox_lrn.Text = String.Empty;
@@ -107,18 +116,46 @@ namespace AttendanceMonitoringSystem2
                     textbox_lastName.Text = String.Empty;
                     textbox_course.Text = String.Empty;
                     textbox_section.Text = String.Empty;
+                    pictureBox1.Image = Image.FromFile("Student.jpg");
 
                     button1.Enabled = true;
                     button1.Enabled = false;
                     button1.Enabled = false;
                     DatabaseConnection.DatabaseClass.connect.Close();
                     refreshForm();
+
+                    /*
+                    DatabaseConnection.DatabaseClass.connect.Open();
+                    DatabaseConnection.DatabaseClass.command = new MySqlCommand(DatabaseConnection.DatabaseClass.sql_insert_student(textbox_studNum.Text,
+                        textbox_lrn.Text, textbox_firstName.Text, textbox_lastName.Text, textbox_course.Text, textbox_section.Text), DatabaseConnection.DatabaseClass.connect);
+
+                   MySqlDataReader reader2;
+                    reader2 = DatabaseConnection.DatabaseClass.command.ExecuteReader();
+                    MessageBox.Show("Student Created!");
+
+
+                    //for clearing
+                    textbox_studNum.Text = String.Empty;
+                    textbox_lrn.Text = String.Empty;
+                    textbox_firstName.Text = String.Empty;
+                    textbox_lastName.Text = String.Empty;
+                    textbox_course.Text = String.Empty;
+                    textbox_section.Text = String.Empty;
+                    
+                    button1.Enabled = true;
+                    button1.Enabled = false;
+                    button1.Enabled = false;
+                    DatabaseConnection.DatabaseClass.connect.Close();
+                    refreshForm();
+                    */
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);
                 }
             }
+
+
         }
 
         //update student
@@ -283,6 +320,18 @@ namespace AttendanceMonitoringSystem2
 
         }
 
+        public byte[] imageTobyte(System.Drawing.Image imageIn)
+        {
+            using (var ms = new MemoryStream())
+            {
+                imageIn.Save(ms, imageIn.RawFormat);
+                return ms.ToArray();
+            }
+        }
+
+        string path;
+        byte[] arr;
+        string imgLoc = "";
         private void button6_Click(object sender, EventArgs e)
         {
            // files(*.*) | *.* "'
@@ -290,6 +339,10 @@ namespace AttendanceMonitoringSystem2
                 if (ofd.ShowDialog() == DialogResult.OK)
                 {
                     pictureBox1.Image = Image.FromFile(ofd.FileName);
+                    //test = imageTobyte(Image.FromFile(ofd.FileName));
+                    imgLoc = ofd.FileName.ToString();
+                    //path = ofd.FileName;
+                    //Image image = pictureBox1.Image;
                 }
         }
     }
