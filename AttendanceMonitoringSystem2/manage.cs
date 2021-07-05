@@ -94,19 +94,31 @@ namespace AttendanceMonitoringSystem2
                 DatabaseConnection.DatabaseClass.connect.Close();
                 try
                 {
-                    /*
-                    byte[] image = null;
-                    FileStream streem = new FileStream(imgLoc, FileMode.Open, FileAccess.Read);
-                    BinaryReader brs = new BinaryReader(streem);
-                    image = brs.ReadBytes((int)streem.Length);
-                    */
-                    MySqlCommand cmd;
+                    if (imgLoc != "")
+                    {
+                        Console.WriteLine("test " + imgLoc);
+                        byte[] image = null;
+                        MySqlCommand cmd;
+                        FileStream streem = new FileStream(imgLoc, FileMode.Open, FileAccess.Read);
+                        BinaryReader brs = new BinaryReader(streem);
+                        image = brs.ReadBytes((int)streem.Length);
 
-                    DatabaseConnection.DatabaseClass.connect.Open();
-                    string query = "INSERT INTO student(lrn, first_name, last_name, course, section) VALUES ('" + textbox_lrn.Text + "','" + textbox_firstName.Text + "','" + textbox_lastName.Text + "','" + textbox_course.Text + "','" + textbox_section.Text + "',)";
-                    cmd = new MySqlCommand(query, DatabaseConnection.DatabaseClass.connect);
-                    //cmd.Parameters.Add(new MySqlParameter("@image", image));
-                    int n = cmd.ExecuteNonQuery();
+                        DatabaseConnection.DatabaseClass.connect.Open();
+                        string query = "INSERT INTO student(lrn, first_name, last_name, course, section, pic) VALUES ('" + textbox_lrn.Text + "','" + textbox_firstName.Text + "','" + textbox_lastName.Text + "','" + textbox_course.Text + "','" + textbox_section.Text + "',@image)";
+                        cmd = new MySqlCommand(query, DatabaseConnection.DatabaseClass.connect);
+                        cmd.Parameters.Add(new MySqlParameter("@image", image));
+                        int n = cmd.ExecuteNonQuery();
+                    }
+                    else
+                    {
+                        DatabaseConnection.DatabaseClass.connect.Open();
+                        DatabaseConnection.DatabaseClass.command = new MySqlCommand(DatabaseConnection.DatabaseClass.sql_insert_student(textbox_studNum.Text,
+                            textbox_lrn.Text, textbox_firstName.Text, textbox_lastName.Text, textbox_course.Text, textbox_section.Text), DatabaseConnection.DatabaseClass.connect);
+
+                        MySqlDataReader reader2;
+                        reader2 = DatabaseConnection.DatabaseClass.command.ExecuteReader();
+                    }
+
 
                     MessageBox.Show("Student Created!");
 
@@ -118,10 +130,9 @@ namespace AttendanceMonitoringSystem2
                     textbox_course.Text = String.Empty;
                     textbox_section.Text = String.Empty;
                     pictureBox1.Image = Image.FromFile("Student.jpg");
+                    imgLoc = "";
 
                     button1.Enabled = true;
-                    button1.Enabled = false;
-                    button1.Enabled = false;
                     DatabaseConnection.DatabaseClass.connect.Close();
                     refreshForm();
 
@@ -162,6 +173,52 @@ namespace AttendanceMonitoringSystem2
         //update student
         private void button2_Click(object sender, EventArgs e)
         {
+            if (imgLoc != "")
+            {
+                Console.WriteLine("test " + imgLoc);
+                byte[] image = null;
+                MySqlCommand cmd;
+                FileStream streem = new FileStream(imgLoc, FileMode.Open, FileAccess.Read);
+                BinaryReader brs = new BinaryReader(streem);
+                image = brs.ReadBytes((int)streem.Length);
+
+                DatabaseConnection.DatabaseClass.connect.Open();
+                string query =
+                    "UPDATE student SET lrn='" + textbox_lrn.Text + "', first_name='" + textbox_firstName.Text + "', last_name='" + textbox_lastName.Text + "', course='" + textbox_course.Text + "', section='" + textbox_section.Text + "', pic=@image WHERE student_number='" + textbox_studNum.Text + "' ";
+                cmd = new MySqlCommand(query, DatabaseConnection.DatabaseClass.connect);
+                cmd.Parameters.Add(new MySqlParameter("@image", image));
+                int n = cmd.ExecuteNonQuery();
+            }
+            else
+            {
+                DatabaseConnection.DatabaseClass.connect.Open();
+                DatabaseConnection.DatabaseClass.command = new MySqlCommand(DatabaseConnection.DatabaseClass.sql_update_student(textbox_lrn.Text, textbox_firstName.Text,
+                    textbox_lastName.Text, textbox_course.Text, textbox_section.Text, textbox_studNum.Text), DatabaseConnection.DatabaseClass.connect);
+
+                MySqlDataReader reader2;
+                reader2 = DatabaseConnection.DatabaseClass.command.ExecuteReader();
+            }
+
+            MessageBox.Show("Student Updated!");
+            //for clearing
+            textbox_studNum.Text = String.Empty;
+            textbox_lrn.Text = String.Empty;
+            textbox_firstName.Text = String.Empty;
+            textbox_lastName.Text = String.Empty;
+            textbox_course.Text = String.Empty;
+            textbox_section.Text = String.Empty;
+            pictureBox1.Image = Image.FromFile("Student.jpg");
+
+            button1.Enabled = true;
+            button2.Enabled = false;
+            button3.Enabled = false;
+
+            textbox_studNum.Enabled = true;
+            textbox_lrn.Enabled = true;
+            DatabaseConnection.DatabaseClass.connect.Close();
+            refreshForm();
+
+            /*
             DatabaseConnection.DatabaseClass.connect.Open();
             DatabaseConnection.DatabaseClass.command = new MySqlCommand(DatabaseConnection.DatabaseClass.sql_update_student(textbox_lrn.Text, textbox_firstName.Text, 
                 textbox_lastName.Text, textbox_course.Text, textbox_section.Text, textbox_studNum.Text), DatabaseConnection.DatabaseClass.connect);
@@ -184,6 +241,7 @@ namespace AttendanceMonitoringSystem2
             textbox_lrn.Enabled = true;
             DatabaseConnection.DatabaseClass.connect.Close();
             refreshForm();
+            */
         }
 
         //delete
@@ -204,10 +262,12 @@ namespace AttendanceMonitoringSystem2
                 textbox_lastName.Text = String.Empty;
                 textbox_course.Text = String.Empty;
                 textbox_section.Text = String.Empty;
+                pictureBox1.Image = Image.FromFile("Student.jpg");
 
                 button1.Enabled = true;
                 button2.Enabled = false;
                 button3.Enabled = false;
+                textbox_lrn.Enabled = true;
 
                 refreshForm();
                 DatabaseConnection.DatabaseClass.connect.Close();
@@ -220,31 +280,12 @@ namespace AttendanceMonitoringSystem2
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            /*
             textbox_studNum.Text = dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString();
             textbox_lrn.Text = dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString();
             textbox_firstName.Text = dataGridView1.Rows[e.RowIndex].Cells[2].Value.ToString();
             textbox_lastName.Text = dataGridView1.Rows[e.RowIndex].Cells[3].Value.ToString();
             textbox_course.Text = dataGridView1.Rows[e.RowIndex].Cells[4].Value.ToString();
             textbox_section.Text = dataGridView1.Rows[e.RowIndex].Cells[5].Value.ToString();
-
-                        /*
-            //pic
-            byte[] img = (byte[])DatabaseConnection.DatabaseClass.tableStudentSearch.Rows[0][6];
-
-            //check if empty pic
-            if (img.Length <= 0 || img == null)
-            {
-                pictureBox1.Image = Image.FromFile("Student.jpg");
-            }
-            else
-            {
-                MemoryStream ms = new MemoryStream(img);
-                pictureBox1.Image = Image.FromStream(ms);
-                //DatabaseConnection.DatabaseClass.adapter.Dispose();
-            }
-
-            
 
             //pic
             byte[] img = (byte[])dataGridView1.Rows[e.RowIndex].Cells[6].Value;
@@ -262,12 +303,12 @@ namespace AttendanceMonitoringSystem2
             }
 
 
+            textbox_studNum.Enabled = false;
             button2.Enabled = Enabled;
             button3.Enabled = Enabled;
             button1.Enabled = false;
             textbox_studNum.Enabled = false;
             textbox_lrn.Enabled = false;
-            */
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -303,7 +344,6 @@ namespace AttendanceMonitoringSystem2
         //search
         private void button5_Click(object sender, EventArgs e)
         {
-
             DatabaseConnection.DatabaseClass.connect.Close();
             //checks if empty
             if (String.IsNullOrEmpty(textbox_studSearch.Text) || textbox_studSearch.Text.Contains(" "))
@@ -335,7 +375,6 @@ namespace AttendanceMonitoringSystem2
                         textbox_section.Text = Convert.ToString(DatabaseConnection.DatabaseClass.tableStudentSearch.Rows[0][5]);
 
                         //pic
-                        /*
                         byte[] img = (byte[])DatabaseConnection.DatabaseClass.tableStudentSearch.Rows[0][6];
 
                         //check if empty pic
@@ -349,13 +388,15 @@ namespace AttendanceMonitoringSystem2
                             pictureBox1.Image = Image.FromStream(ms);
                             //DatabaseConnection.DatabaseClass.adapter.Dispose();
                         }
-                        */
+
+
                         button2.Enabled = Enabled;
                         button3.Enabled = Enabled;
                         button1.Enabled = false;
                         textbox_studNum.Enabled = false;
                         textbox_lrn.Enabled = false;
 
+                        DatabaseConnection.DatabaseClass.tableStudentSearch.Clear();
                         DatabaseConnection.DatabaseClass.connect.Close();
                     }
                     catch (Exception ex)
@@ -375,17 +416,8 @@ namespace AttendanceMonitoringSystem2
 
         }
 
-        public byte[] imageTobyte(System.Drawing.Image imageIn)
-        {
-            using (var ms = new MemoryStream())
-            {
-                imageIn.Save(ms, imageIn.RawFormat);
-                return ms.ToArray();
-            }
-        }
 
-        string path;
-        byte[] arr;
+
         string imgLoc = "";
         private void button6_Click(object sender, EventArgs e)
         {

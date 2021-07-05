@@ -15,7 +15,7 @@ namespace AttendanceMonitoringSystem2.DatabaseConnection
 
         public static string showAll = "SELECT * FROM student";
 
-        public static string showAll1 = "SELECT student_number,lrn,first_name,last_name,course,section FROM student";
+        //public static string showAll1 = "SELECT student_number,lrn,first_name,last_name,course,section FROM student";
 
         public static string showLogs = "SELECT "+
                                             "log_record.log_id,"+
@@ -30,7 +30,7 @@ namespace AttendanceMonitoringSystem2.DatabaseConnection
                                             "FROM log_record JOIN student "+
                                             "ON log_record.student_number = student.student_number";
 
-        public static string sql_showStudent = DatabaseConnection.DatabaseClass.showAll1;
+        public static string sql_showStudent = DatabaseConnection.DatabaseClass.showAll;
 
         public static string showAdmin = "SELECT * FROM admin";
 

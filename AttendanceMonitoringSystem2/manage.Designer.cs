@@ -265,6 +265,7 @@
             this.textbox_studNum.Font = new System.Drawing.Font("Bahnschrift Condensed", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textbox_studNum.Location = new System.Drawing.Point(22, 221);
             this.textbox_studNum.Name = "textbox_studNum";
+            this.textbox_studNum.ReadOnly = true;
             this.textbox_studNum.Size = new System.Drawing.Size(214, 36);
             this.textbox_studNum.TabIndex = 10;
             // 
