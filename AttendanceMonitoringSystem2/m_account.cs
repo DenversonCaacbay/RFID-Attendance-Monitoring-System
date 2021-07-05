@@ -42,6 +42,7 @@ namespace AttendanceMonitoringSystem2
         private void m_account_Load(object sender, EventArgs e)
         {
             refreshForm();
+            
         }
 
         private void btn_cancel_Click(object sender, EventArgs e)
@@ -78,14 +79,22 @@ namespace AttendanceMonitoringSystem2
                 DatabaseConnection.DatabaseClass.connect.Close();
                 try
                 {
-                    DatabaseConnection.DatabaseClass.connect.Open();
-                    DatabaseConnection.DatabaseClass.command = new MySqlCommand(DatabaseConnection.DatabaseClass.sql_insert_admin(textbox_adminUsername.Text, textbox_adminPassword.Text), DatabaseConnection.DatabaseClass.connect);
-                    MySqlDataReader reader2;
-                    reader2 = DatabaseConnection.DatabaseClass.command.ExecuteReader();
-                    MessageBox.Show("Admin Created!");
-                    //clear
-                    textbox_adminUsername.Text = String.Empty;
-                    textbox_adminPassword.Text = String.Empty;
+                    for (int x = 0; x < dataGridView1.Rows.Count; x++)
+                    {
+                        if (dataGridView1.Rows.Count != 3)
+                        {
+                            DatabaseConnection.DatabaseClass.connect.Open();
+                            DatabaseConnection.DatabaseClass.command = new MySqlCommand(DatabaseConnection.DatabaseClass.sql_insert_admin(textbox_adminUsername.Text, textbox_adminPassword.Text), DatabaseConnection.DatabaseClass.connect);
+                            MySqlDataReader reader2;
+                            reader2 = DatabaseConnection.DatabaseClass.command.ExecuteReader();
+                            MessageBox.Show("Admin Created!");
+                            //clear
+                            textbox_adminUsername.Text = String.Empty;
+                            textbox_adminPassword.Text = String.Empty;
+                            refreshForm();
+                        }
+                    }
+                   
                 }
                 catch (Exception ex)
                 {
