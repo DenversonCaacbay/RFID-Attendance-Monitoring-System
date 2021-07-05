@@ -94,17 +94,18 @@ namespace AttendanceMonitoringSystem2
                 DatabaseConnection.DatabaseClass.connect.Close();
                 try
                 {
-
+                    /*
                     byte[] image = null;
                     FileStream streem = new FileStream(imgLoc, FileMode.Open, FileAccess.Read);
                     BinaryReader brs = new BinaryReader(streem);
                     image = brs.ReadBytes((int)streem.Length);
+                    */
                     MySqlCommand cmd;
 
                     DatabaseConnection.DatabaseClass.connect.Open();
-                    string query = "INSERT INTO student(lrn, first_name, last_name, course, section, pic) VALUES ('" + textbox_lrn.Text + "','" + textbox_firstName.Text + "','" + textbox_lastName.Text + "','" + textbox_course.Text + "','" + textbox_section.Text + "', @image)";
+                    string query = "INSERT INTO student(lrn, first_name, last_name, course, section) VALUES ('" + textbox_lrn.Text + "','" + textbox_firstName.Text + "','" + textbox_lastName.Text + "','" + textbox_course.Text + "','" + textbox_section.Text + "',)";
                     cmd = new MySqlCommand(query, DatabaseConnection.DatabaseClass.connect);
-                    cmd.Parameters.Add(new MySqlParameter("@image", image));
+                    //cmd.Parameters.Add(new MySqlParameter("@image", image));
                     int n = cmd.ExecuteNonQuery();
 
                     MessageBox.Show("Student Created!");
@@ -219,12 +220,31 @@ namespace AttendanceMonitoringSystem2
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            /*
             textbox_studNum.Text = dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString();
             textbox_lrn.Text = dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString();
             textbox_firstName.Text = dataGridView1.Rows[e.RowIndex].Cells[2].Value.ToString();
             textbox_lastName.Text = dataGridView1.Rows[e.RowIndex].Cells[3].Value.ToString();
             textbox_course.Text = dataGridView1.Rows[e.RowIndex].Cells[4].Value.ToString();
             textbox_section.Text = dataGridView1.Rows[e.RowIndex].Cells[5].Value.ToString();
+
+                        /*
+            //pic
+            byte[] img = (byte[])DatabaseConnection.DatabaseClass.tableStudentSearch.Rows[0][6];
+
+            //check if empty pic
+            if (img.Length <= 0 || img == null)
+            {
+                pictureBox1.Image = Image.FromFile("Student.jpg");
+            }
+            else
+            {
+                MemoryStream ms = new MemoryStream(img);
+                pictureBox1.Image = Image.FromStream(ms);
+                //DatabaseConnection.DatabaseClass.adapter.Dispose();
+            }
+
+            
 
             //pic
             byte[] img = (byte[])dataGridView1.Rows[e.RowIndex].Cells[6].Value;
@@ -247,7 +267,7 @@ namespace AttendanceMonitoringSystem2
             button1.Enabled = false;
             textbox_studNum.Enabled = false;
             textbox_lrn.Enabled = false;
-
+            */
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -255,6 +275,7 @@ namespace AttendanceMonitoringSystem2
             DialogResult dialog = MessageBox.Show("Are you sure you want to cancel?", "Message", MessageBoxButtons.YesNo);
             if (dialog == DialogResult.Yes)
             {
+                textbox_studSearch.Text = String.Empty;
                 textbox_studNum.Text = String.Empty;
                 textbox_lrn.Text = String.Empty;
                 textbox_firstName.Text = String.Empty;
@@ -276,12 +297,13 @@ namespace AttendanceMonitoringSystem2
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-
+            
         }
         
         //search
         private void button5_Click(object sender, EventArgs e)
         {
+
             DatabaseConnection.DatabaseClass.connect.Close();
             //checks if empty
             if (String.IsNullOrEmpty(textbox_studSearch.Text) || textbox_studSearch.Text.Contains(" "))
@@ -301,6 +323,39 @@ namespace AttendanceMonitoringSystem2
                     try
                     {
                         dataGridView1.DataSource = DatabaseConnection.DatabaseClass.tableStudent;
+
+                        //testing only
+                        DatabaseConnection.DatabaseClass.adapter.Fill(DatabaseConnection.DatabaseClass.tableStudentSearch);
+
+                        textbox_studNum.Text = Convert.ToString(DatabaseConnection.DatabaseClass.tableStudentSearch.Rows[0][0]);
+                        textbox_lrn.Text = Convert.ToString(DatabaseConnection.DatabaseClass.tableStudentSearch.Rows[0][1]);
+                        textbox_firstName.Text = Convert.ToString(DatabaseConnection.DatabaseClass.tableStudentSearch.Rows[0][2]);
+                        textbox_lastName.Text = Convert.ToString(DatabaseConnection.DatabaseClass.tableStudentSearch.Rows[0][3]);
+                        textbox_course.Text = Convert.ToString(DatabaseConnection.DatabaseClass.tableStudentSearch.Rows[0][4]);
+                        textbox_section.Text = Convert.ToString(DatabaseConnection.DatabaseClass.tableStudentSearch.Rows[0][5]);
+
+                        //pic
+                        /*
+                        byte[] img = (byte[])DatabaseConnection.DatabaseClass.tableStudentSearch.Rows[0][6];
+
+                        //check if empty pic
+                        if (img.Length <= 0 || img == null)
+                        {
+                            pictureBox1.Image = Image.FromFile("Student.jpg");
+                        }
+                        else
+                        {
+                            MemoryStream ms = new MemoryStream(img);
+                            pictureBox1.Image = Image.FromStream(ms);
+                            //DatabaseConnection.DatabaseClass.adapter.Dispose();
+                        }
+                        */
+                        button2.Enabled = Enabled;
+                        button3.Enabled = Enabled;
+                        button1.Enabled = false;
+                        textbox_studNum.Enabled = false;
+                        textbox_lrn.Enabled = false;
+
                         DatabaseConnection.DatabaseClass.connect.Close();
                     }
                     catch (Exception ex)
@@ -308,6 +363,7 @@ namespace AttendanceMonitoringSystem2
                         MessageBox.Show(ex.Message);
                         DatabaseConnection.DatabaseClass.connect.Close();
                     }
+                        
                 }
                 else
                 {
@@ -315,7 +371,6 @@ namespace AttendanceMonitoringSystem2
                     DatabaseConnection.DatabaseClass.connect.Close();
                 }
             }
-
 
 
         }
