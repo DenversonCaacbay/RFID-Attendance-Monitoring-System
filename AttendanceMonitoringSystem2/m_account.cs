@@ -113,16 +113,23 @@ namespace AttendanceMonitoringSystem2
             DialogResult dialog = MessageBox.Show("Are you sure?", "Message", MessageBoxButtons.YesNo);
             if (dialog == DialogResult.Yes)
             {
-                DatabaseConnection.DatabaseClass.connect.Open();
-                DatabaseConnection.DatabaseClass.command = new MySqlCommand(DatabaseConnection.DatabaseClass.sql_delete_admin(textbox_adminID.Text), DatabaseConnection.DatabaseClass.connect);
-                MySqlDataReader reader;
-                reader = DatabaseConnection.DatabaseClass.command.ExecuteReader();
-                MessageBox.Show("Admin Deleted!", "Message");
+                try
+                {
+                    DatabaseConnection.DatabaseClass.connect.Open();
+                    DatabaseConnection.DatabaseClass.command = new MySqlCommand(DatabaseConnection.DatabaseClass.sql_delete_admin(textbox_adminID.Text), DatabaseConnection.DatabaseClass.connect);
+                    MySqlDataReader reader;
+                    reader = DatabaseConnection.DatabaseClass.command.ExecuteReader();
+                    MessageBox.Show("Admin Deleted!", "Message");
 
-                textbox_adminID.Text = String.Empty;
-                textbox_adminID.Text = String.Empty;
-                textbox_adminPassword.Text = String.Empty;
-                refreshForm();
+                    textbox_adminID.Text = String.Empty;
+                    textbox_adminUsername.Text = String.Empty;
+                    textbox_adminPassword.Text = String.Empty;
+                    refreshForm();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
             }
             else
             {
@@ -146,9 +153,24 @@ namespace AttendanceMonitoringSystem2
 
         private void btn_admin_update_Click(object sender, EventArgs e)
         {
-            DatabaseConnection.DatabaseClass.connect.Open();
+            try
+            {
+                DatabaseConnection.DatabaseClass.connect.Open();
+                DatabaseConnection.DatabaseClass.command = new MySqlCommand(DatabaseConnection.DatabaseClass.sql_update_admin(textbox_adminUsername.Text, textbox_adminPassword.Text, textbox_adminID.Text), DatabaseConnection.DatabaseClass.connect);
+                MySqlDataReader reader;
+                reader = DatabaseConnection.DatabaseClass.command.ExecuteReader();
 
 
+                MessageBox.Show("Admin Updated!", "Message");
+                textbox_adminID.Text = String.Empty;
+                textbox_adminUsername.Text = String.Empty;
+                textbox_adminPassword.Text = String.Empty;
+                refreshForm();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
 

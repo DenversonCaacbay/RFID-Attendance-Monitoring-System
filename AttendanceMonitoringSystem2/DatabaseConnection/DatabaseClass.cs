@@ -78,9 +78,9 @@ namespace AttendanceMonitoringSystem2.DatabaseConnection
         {
             return "SELECT * FROM admin WHERE username='"+username+"' AND password='"+password+"' ";
         }
-        public static string sql_update_admin(string ID, string username, string password)
+        public static string sql_update_admin(string username, string password, string ID)
         {
-            return "UPDATE student SET username='"+username+"', password='"+password+"' WHERE admin_id='"+ID+"' ";
+            return "UPDATE admin SET username='"+username+"', password='"+password+"' WHERE admin_id='"+ID+"' ";
         }
         public static string sql_delete_admin(string ID)
         {
