@@ -62,6 +62,7 @@ namespace AttendanceMonitoringSystem2
             button2.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, button2.Width, button2.Height, 10, 10));
             button3.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, button3.Width, button3.Height, 10, 10));
 
+
             refreshForm();
         }
 
@@ -280,35 +281,41 @@ namespace AttendanceMonitoringSystem2
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            textbox_studNum.Text = dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString();
-            textbox_lrn.Text = dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString();
-            textbox_firstName.Text = dataGridView1.Rows[e.RowIndex].Cells[2].Value.ToString();
-            textbox_lastName.Text = dataGridView1.Rows[e.RowIndex].Cells[3].Value.ToString();
-            textbox_course.Text = dataGridView1.Rows[e.RowIndex].Cells[4].Value.ToString();
-            textbox_section.Text = dataGridView1.Rows[e.RowIndex].Cells[5].Value.ToString();
-
-            //pic
-            byte[] img = (byte[])dataGridView1.Rows[e.RowIndex].Cells[6].Value;
-
-            //check if empty pic
-            if (img.Length <= 0 || img == null)
+            if (e.RowIndex >= 0)
             {
-                pictureBox1.Image = Image.FromFile("Student.jpg");
-            }
-            else
-            {
-                MemoryStream ms = new MemoryStream(img);
-                pictureBox1.Image = Image.FromStream(ms);
-                //DatabaseConnection.DatabaseClass.adapter.Dispose();
-            }
+                textbox_studNum.Text = dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString();
+                textbox_lrn.Text = dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString();
+                textbox_firstName.Text = dataGridView1.Rows[e.RowIndex].Cells[2].Value.ToString();
+                textbox_lastName.Text = dataGridView1.Rows[e.RowIndex].Cells[3].Value.ToString();
+                textbox_course.Text = dataGridView1.Rows[e.RowIndex].Cells[4].Value.ToString();
+                textbox_section.Text = dataGridView1.Rows[e.RowIndex].Cells[5].Value.ToString();
+
+                //pic
+                byte[] img = (byte[])dataGridView1.Rows[e.RowIndex].Cells[6].Value;
+
+                //check if empty pic
+                if (img.Length <= 0 || img == null)
+                {
+                    pictureBox1.Image = Image.FromFile("Student.jpg");
+                }
+                else
+                {
+                    MemoryStream ms = new MemoryStream(img);
+                    pictureBox1.Image = Image.FromStream(ms);
+                    //DatabaseConnection.DatabaseClass.adapter.Dispose();
+                }
 
 
-            textbox_studNum.Enabled = false;
-            button2.Enabled = Enabled;
-            button3.Enabled = Enabled;
-            button1.Enabled = false;
-            textbox_studNum.Enabled = false;
-            textbox_lrn.Enabled = false;
+                textbox_studNum.Enabled = false;
+                button2.Enabled = Enabled;
+                button3.Enabled = Enabled;
+                button1.Enabled = false;
+                textbox_studNum.Enabled = false;
+                textbox_lrn.Enabled = false;
+            }
+            else {
+                
+            }
         }
 
         private void button4_Click(object sender, EventArgs e)
