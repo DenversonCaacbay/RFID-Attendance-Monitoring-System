@@ -78,6 +78,14 @@ namespace AttendanceMonitoringSystem2.DatabaseConnection
         {
             return "SELECT * FROM admin WHERE username='"+username+"' AND password='"+password+"' ";
         }
+        public static string sql_update_admin(string ID, string username, string password)
+        {
+            return "UPDATE student SET username='"+username+"', password='"+password+"' WHERE admin_id='"+ID+"' ";
+        }
+        public static string sql_delete_admin(string ID)
+        {
+            return "DELETE FROM admin WHERE admin_id='"+ID+"' ";
+        }
 
         //attendance.cs
         public static string sql_search_studNum(string studNum)
