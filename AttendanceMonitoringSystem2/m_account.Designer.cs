@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -93,6 +93,7 @@
             this.textbox_adminPassword.PasswordChar = '*';
             this.textbox_adminPassword.Size = new System.Drawing.Size(209, 31);
             this.textbox_adminPassword.TabIndex = 48;
+            this.textbox_adminPassword.TextChanged += new System.EventHandler(this.textbox_adminPassword_TextChanged);
             // 
             // textbox_adminUsername
             // 
@@ -101,6 +102,7 @@
             this.textbox_adminUsername.Name = "textbox_adminUsername";
             this.textbox_adminUsername.Size = new System.Drawing.Size(209, 31);
             this.textbox_adminUsername.TabIndex = 47;
+            this.textbox_adminUsername.TextChanged += new System.EventHandler(this.textbox_adminUsername_TextChanged);
             // 
             // textbox_adminID
             // 
@@ -109,6 +111,7 @@
             this.textbox_adminID.Name = "textbox_adminID";
             this.textbox_adminID.Size = new System.Drawing.Size(209, 31);
             this.textbox_adminID.TabIndex = 46;
+            this.textbox_adminID.TextChanged += new System.EventHandler(this.textbox_adminID_TextChanged);
             // 
             // btn_cancel
             // 
@@ -126,7 +129,6 @@
             // btn_admin_delete
             // 
             this.btn_admin_delete.BackColor = System.Drawing.Color.White;
-            this.btn_admin_delete.Enabled = false;
             this.btn_admin_delete.Font = new System.Drawing.Font("Bahnschrift Condensed", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_admin_delete.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(140)))), ((int)(((byte)(0)))));
             this.btn_admin_delete.Location = new System.Drawing.Point(539, 384);
@@ -140,7 +142,6 @@
             // btn_admin_update
             // 
             this.btn_admin_update.BackColor = System.Drawing.Color.White;
-            this.btn_admin_update.Enabled = false;
             this.btn_admin_update.Font = new System.Drawing.Font("Bahnschrift Condensed", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_admin_update.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(140)))), ((int)(((byte)(0)))));
             this.btn_admin_update.Location = new System.Drawing.Point(433, 384);
@@ -168,9 +169,9 @@
             // 
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
-            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.Black;
+            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle9;
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -183,13 +184,14 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersWidth = 5;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black;
-            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle10.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle10.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.Black;
+            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle10;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(409, 272);
             this.dataGridView1.TabIndex = 41;
+            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick_1);
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // Column1

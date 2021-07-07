@@ -8,14 +8,54 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
+using System.IO;
 
 namespace AttendanceMonitoringSystem2
 {
     public partial class record : UserControl
     {
+        /*
+        DataTable dt = new DataTable();
 
+        public static void ExportToExcel(DataTable dt, string filename)
+        {
+            StreamWriter wr = new StreamWriter(@"c:\LogRecordsAttendance\" + filename + ".xlsx");
+            try
+            {
+                for (int i = 0; i < dt.Columns.Count; i++)
+                {
+                    wr.Write(dt.Columns[i].ToString().ToUpper() + "\t");
+                }
 
+                wr.WriteLine();
 
+                //write rows to excel file
+                for (int i = 0; i < (dt.Rows.Count); i++)
+                {
+                    for (int j = 0; j < dt.Columns.Count; j++)
+                    {
+                        if (dt.Rows[i][j] != null)
+                        {
+                            wr.Write(Convert.ToString(dt.Rows[i][j]) + "\t");
+                        }
+                        else
+                        {
+                            wr.Write("\t");
+                        }
+                    }
+                    //go to next line
+                    wr.WriteLine();
+                }
+                //close file
+                wr.Close();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+        }
+        */
         public record()
         {
             InitializeComponent();
@@ -41,9 +81,16 @@ namespace AttendanceMonitoringSystem2
                 MessageBox.Show(ex.Message);
             }
         }
+        private void record_Load(object sender, EventArgs e)
+        {
+            
+        }
 
         private void button1_Click(object sender, EventArgs e)
         {
+
+           // ExportToExcel(dt, "FileName");
+            
             DialogResult dr = MessageBox.Show("Do you want to Print the Records.", "Message", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (dr == DialogResult.Yes && dataGridView1.Rows.Count > 0)
             {
@@ -70,15 +117,12 @@ namespace AttendanceMonitoringSystem2
                     dataGridView1.Rows.Remove(dataGridView1.Rows[0]);
                 }
             }
+            
         }
 
-        private void record_Load(object sender, EventArgs e)
+        private void button2_Click(object sender, EventArgs e)
         {
             refreshForm();
         }
-
-
-
-
     }
 }

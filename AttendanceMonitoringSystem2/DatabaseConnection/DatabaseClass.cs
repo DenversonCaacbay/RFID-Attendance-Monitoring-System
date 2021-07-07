@@ -17,18 +17,11 @@ namespace AttendanceMonitoringSystem2.DatabaseConnection
 
         public static string showAll1 = "SELECT student_number,lrn,first_name,last_name,course,section,pic FROM student ORDER BY student_number ASC";
 
-        public static string showLogs = "SELECT "+
-                                            "log_record.log_id,"+
-                                            "log_record.student_number,"+
-                                            "log_record.attendance ,"+
-                                            "student.lrn,"+
-                                            "student.first_name," +
-                                            "student.last_name," +
-                                            "student.course," +
-                                            "student.section," +
-                                            "log_record.date_time " +
-                                            "FROM log_record JOIN student "+
-                                            "ON log_record.student_number = student.student_number";
+        /*public static string showLogs = "SELECT "+ "log_record.log_id," + "log_record.student_number,"+"log_record.attendance ,"+"student.lrn,"+
+                                            "student.first_name," +"student.last_name," + "student.course," +"student.section," +"log_record.date_time " +
+                                            "FROM log_record JOIN student "+ "ON log_record.student_number = student.student_number";
+        */
+        public static string showLogs = "SELECT log_record.log_id,log_record.student_number,log_record.attendance ,student.lrn,student.first_name,student.last_name,student.course,student.section,log_record.date_time FROM log_record JOIN student " + "ON log_record.student_number = student.student_number";
 
         public static string sql_showStudent = DatabaseConnection.DatabaseClass.showAll1;
 

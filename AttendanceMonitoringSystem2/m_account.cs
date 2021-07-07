@@ -42,14 +42,20 @@ namespace AttendanceMonitoringSystem2
         private void m_account_Load(object sender, EventArgs e)
         {
             refreshForm();
+            btn_admin_update.Enabled = false;
+            btn_admin_delete.Enabled = false;
         }
 
         private void btn_cancel_Click(object sender, EventArgs e)
         {
             btn_admin_new.Enabled = true;
-            btn_admin_update.Enabled = true;
-            btn_admin_delete.Enabled = true;
+            btn_admin_update.Enabled = false;
+            btn_admin_delete.Enabled = false;
 
+            textbox_adminID.Enabled = false;
+            textbox_adminUsername.Enabled = true;
+            textbox_adminPassword.Enabled = true;
+            textbox_adminID.Text = String.Empty;
             textbox_adminUsername.Text = String.Empty;
             textbox_adminPassword.Text = String.Empty;
         }
@@ -62,6 +68,8 @@ namespace AttendanceMonitoringSystem2
 
         private void btn_admin_new_Click(object sender, EventArgs e)
         {
+
+           
             DatabaseConnection.DatabaseClass.connect.Open();
             DatabaseConnection.DatabaseClass.command = new MySqlCommand(DatabaseConnection.DatabaseClass.sql_checker_admin(textbox_adminUsername.Text, textbox_adminPassword.Text), DatabaseConnection.DatabaseClass.connect);
             MySqlDataReader reader;
@@ -110,6 +118,7 @@ namespace AttendanceMonitoringSystem2
 
         private void btn_admin_delete_Click(object sender, EventArgs e)
         {
+
             DialogResult dialog = MessageBox.Show("Are you sure?", "Message", MessageBoxButtons.YesNo);
             if (dialog == DialogResult.Yes)
             {
@@ -144,15 +153,18 @@ namespace AttendanceMonitoringSystem2
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            /*
             textbox_adminID.Text = dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString();
             textbox_adminUsername.Text = dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString();
             textbox_adminPassword.Text = dataGridView1.Rows[e.RowIndex].Cells[2].Value.ToString();
 
             textbox_adminID.Enabled = false;
+            */
         }
 
         private void btn_admin_update_Click(object sender, EventArgs e)
         {
+
             try
             {
                 DatabaseConnection.DatabaseClass.connect.Open();
@@ -173,6 +185,64 @@ namespace AttendanceMonitoringSystem2
             }
         }
 
+        private void dataGridView1_CellClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                if (e.RowIndex == 0)
+                {
+                    textbox_adminID.Text = dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString();
+                    textbox_adminUsername.Text = dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString();
+                    textbox_adminPassword.Text = dataGridView1.Rows[e.RowIndex].Cells[2].Value.ToString();
 
+                    btn_admin_new.Enabled = false;
+                    btn_admin_delete.Enabled = false;
+                    btn_admin_update.Enabled = false;
+
+                    textbox_adminPassword.Enabled = false;
+                    textbox_adminUsername.Enabled = false;
+                    textbox_adminID.Enabled = false;
+                }
+                else
+                {
+                    textbox_adminID.Text = dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString();
+                    textbox_adminUsername.Text = dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString();
+                    textbox_adminPassword.Text = dataGridView1.Rows[e.RowIndex].Cells[2].Value.ToString();
+
+                    btn_admin_new.Enabled = false;
+                    btn_admin_delete.Enabled = true;
+                    btn_admin_update.Enabled = true;
+
+                    textbox_adminPassword.Enabled = true;
+                    textbox_adminUsername.Enabled = true;
+                    textbox_adminID.Enabled = false;
+                }
+            }
+           
+            
+            //button3.Enabled = Enabled;
+            // button1.Enabled = false;
+
+            else
+            { 
+            
+            }
+        }
+
+        private void textbox_adminID_TextChanged(object sender, EventArgs e)
+        {
+            
+
+        }
+
+        private void textbox_adminUsername_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textbox_adminPassword_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
