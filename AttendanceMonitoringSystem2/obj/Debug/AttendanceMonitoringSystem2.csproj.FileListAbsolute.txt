@@ -72,3 +72,4 @@ F:\Files\Documents\GitHub\RFID-Attendance-Monitoring-System\AttendanceMonitoring
 C:\Users\Denver-Kun\Desktop\AttendanceMonitoringSystem2\RFID-Attendance-Monitoring-System\AttendanceMonitoringSystem2\obj\Debug\AttendanceMonitoringSystem2.m_account.resources
 C:\Users\Denver-Kun\Desktop\AttendanceMonitoringSystem2\RFID-Attendance-Monitoring-System\AttendanceMonitoringSystem2\obj\Debug\AttendanceMonitoringSystem2.csprojAssemblyReference.cache
 F:\Files\Documents\GitHub\RFID-Attendance-Monitoring-System\AttendanceMonitoringSystem2\obj\Debug\AttendanceMonitoringSystem2.m_account.resources
+F:\Files\Documents\GitHub\RFID-Attendance-Monitoring-System\AttendanceMonitoringSystem2\obj\Debug\AttendanceMonitoringSystem2.csproj.ResolveComReference.cache

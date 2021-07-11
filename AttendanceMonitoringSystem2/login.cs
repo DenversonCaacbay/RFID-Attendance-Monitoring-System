@@ -62,6 +62,7 @@ namespace AttendanceMonitoringSystem2
         }
 
         //login
+        public static string admin;
         private void button1_Click(object sender, EventArgs e)
         {
             //tableLogin.Clear();
@@ -78,8 +79,15 @@ namespace AttendanceMonitoringSystem2
                     DatabaseConnection.DatabaseClass.connect.Close();
                     var user = DatabaseConnection.DatabaseClass.tableLogin.Rows[0][1];
                     admin_access = DatabaseConnection.DatabaseClass.tableLogin.Rows[0][3].ToString();
-                    Console.WriteLine("Logged In User: "+user+" | Admin Access: "+admin_access);
+                    admin = user.ToString();
+                    Console.WriteLine("Logged In User: "+user.ToString()+" | Admin Access: "+admin_access);
                     //MessageBox.Show("Admin Log In Successfully", "Success");
+
+                    DatabaseConnection.DatabaseClass.connect.Open();
+                    MySqlCommand logCommand = new MySqlCommand(DatabaseConnection.DatabaseClass.sql_admin_log(admin, "1"), DatabaseConnection.DatabaseClass.connect);
+                    MySqlDataReader reader;
+                    reader = logCommand.ExecuteReader();
+                    DatabaseConnection.DatabaseClass.connect.Close();
 
 
                     this.Hide();

@@ -79,6 +79,10 @@ namespace AttendanceMonitoringSystem2.DatabaseConnection
         {
             return "DELETE FROM admin WHERE admin_id='"+ID+"' ";
         }
+        public static string sql_admin_log(string ID, string log)
+        {
+            return "INSERT INTO history_log(admin_username, log) VALUES ('"+ID+"', '"+log+"')";
+        }
 
         //attendance.cs
         public static string sql_search_studNum(string studNum)

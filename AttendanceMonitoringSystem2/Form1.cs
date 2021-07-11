@@ -161,6 +161,13 @@ namespace AttendanceMonitoringSystem2
             DialogResult dr = MessageBox.Show("Do you want to Log Out.", "Message", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (dr == DialogResult.Yes)
             {
+                DatabaseConnection.DatabaseClass.connect.Open();
+                MySqlCommand logCommand = new MySqlCommand(DatabaseConnection.DatabaseClass.sql_admin_log(login.admin, "0"), DatabaseConnection.DatabaseClass.connect);
+                MySqlDataReader reader;
+                reader = logCommand.ExecuteReader();
+                DatabaseConnection.DatabaseClass.connect.Close();
+                Console.WriteLine(login.admin+" has logged out");
+
                 this.Hide();
                 new login().Show();
                 login.admin_access = "";

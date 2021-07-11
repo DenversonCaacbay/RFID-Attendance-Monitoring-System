@@ -83,7 +83,7 @@ namespace AttendanceMonitoringSystem2
         }
         private void record_Load(object sender, EventArgs e)
         {
-            
+            refreshForm();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -96,7 +96,10 @@ namespace AttendanceMonitoringSystem2
             {
                 
                 Microsoft.Office.Interop.Excel.Application xcelApp = new Microsoft.Office.Interop.Excel.Application();
+
                 xcelApp.Application.Workbooks.Add(Type.Missing);
+
+                string date = DateTime.Now.ToString("dd-M-yyyy");
 
                 for (int i = 1; i < dataGridView1.Columns.Count + 1; i++)
                 {
@@ -116,6 +119,8 @@ namespace AttendanceMonitoringSystem2
                 {
                     dataGridView1.Rows.Remove(dataGridView1.Rows[0]);
                 }
+
+                xcelApp.Application.ActiveWorkbook.SaveAs(date+".xls");
             }
             
         }
