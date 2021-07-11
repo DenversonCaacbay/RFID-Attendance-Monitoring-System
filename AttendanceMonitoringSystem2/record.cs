@@ -117,6 +117,12 @@ namespace AttendanceMonitoringSystem2
                 xcelApp.Visible = true;
                 while (dataGridView1.Rows.Count > 0)
                 {
+                    DatabaseConnection.DatabaseClass.connect.Open();
+                    MySqlCommand command = new MySqlCommand(DatabaseConnection.DatabaseClass.sql_delete_attendance(dataGridView1.Rows[0].Cells[0].Value.ToString()), DatabaseConnection.DatabaseClass.connect);
+                    MySqlDataReader reader;
+                    reader = command.ExecuteReader();
+                    DatabaseConnection.DatabaseClass.connect.Close();
+                    //Console.WriteLine(dataGridView1.Rows[0].Cells[0].Value.ToString());
                     dataGridView1.Rows.Remove(dataGridView1.Rows[0]);
                 }
 

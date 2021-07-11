@@ -118,6 +118,12 @@ namespace AttendanceMonitoringSystem2.DatabaseConnection
             return "INSERT INTO log_record(student_number, attendance) VALUES ('"+studNum+"', '"+attendance+"')";
         }
         
+        //record
+        public static string sql_delete_attendance(string ID)
+        {
+            return "DELETE FROM log_record WHERE log_id="+ID;
+        }
+
         //Processes
         public static MySqlConnection connect;
         public static MySqlCommand command;
