@@ -14,6 +14,9 @@ namespace AttendanceMonitoringSystem2
 {
     public partial class login : Form
     {
+        public static login instance;
+
+
         public static string admin_access;
 
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
@@ -34,6 +37,8 @@ namespace AttendanceMonitoringSystem2
         {
             InitializeComponent();
             DatabaseConnection.DatabaseClass.loginSetup();
+
+            instance = this;
         }
 
         private void login_Load(object sender, EventArgs e)
@@ -65,6 +70,9 @@ namespace AttendanceMonitoringSystem2
         public static string admin;
         private void button1_Click(object sender, EventArgs e)
         {
+            //textbox username variable
+            //string tb_username = textbox_username.Text;
+
             //tableLogin.Clear();
             DatabaseConnection.DatabaseClass.connect.Close();
             try
@@ -83,6 +91,8 @@ namespace AttendanceMonitoringSystem2
                     Console.WriteLine("Logged In User: "+user.ToString()+" | Admin Access: "+admin_access);
                     //MessageBox.Show("Admin Log In Successfully", "Success");
 
+                   
+
                     DatabaseConnection.DatabaseClass.connect.Open();
                     MySqlCommand logCommand = new MySqlCommand(DatabaseConnection.DatabaseClass.sql_admin_log(admin, "1"), DatabaseConnection.DatabaseClass.connect);
                     MySqlDataReader reader;
@@ -92,6 +102,7 @@ namespace AttendanceMonitoringSystem2
 
                     this.Hide();
                     new Form1().Show();
+                    Form1.instance.user.Text = textbox_username.Text;
                 }
                 else
                 {

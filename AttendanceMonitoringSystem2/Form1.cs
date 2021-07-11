@@ -17,6 +17,9 @@ namespace AttendanceMonitoringSystem2
     public partial class Form1 : Form
     {
 
+        public static Form1 instance;
+        public Label user;
+
         /*
         //database needs
         //string database = "datasource=localhost; port=3306; username=root; password=; database=school";
@@ -72,6 +75,9 @@ namespace AttendanceMonitoringSystem2
             InitializeComponent();
             this.FormBorderStyle = FormBorderStyle.None;
             this.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0,Width,Height, 15, 15));
+
+            instance = this;
+            user = label5;
         }
 
         private void Form1_Load(object sender, EventArgs e)

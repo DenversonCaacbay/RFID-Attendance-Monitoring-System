@@ -49,6 +49,24 @@ namespace AttendanceMonitoringSystem2.DatabaseConnection
         {
             return "SELECT * FROM student WHERE student_number="+ID;
         }
+        public static string sql_search_student_Number(string ID)
+        {
+            return "SELECT * FROM student WHERE student_number=" + ID;
+        }
+        public static string sql_search_student_Fname(string firstName)
+        {
+            return "SELECT * FROM student WHERE first_name='" + firstName + "' ";
+        }
+        public static string sql_search_student_Lname(string lastName)
+        {
+            return "SELECT * FROM student WHERE last_name='" + lastName + "' ";
+        }
+        public static string sql_search_student_Course(string course)
+        {
+            return "SELECT * FROM student WHERE course='" + course + "' ";
+        }
+
+
         //DELETE
         public static string sql_delete_student(string ID)
         {

@@ -62,7 +62,6 @@ namespace AttendanceMonitoringSystem2
             button2.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, button2.Width, button2.Height, 10, 10));
             button3.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, button3.Width, button3.Height, 10, 10));
 
-
             refreshForm();
         }
 
@@ -336,6 +335,7 @@ namespace AttendanceMonitoringSystem2
                 button2.Enabled = false;
                 button3.Enabled = false;
 
+                comboBox1.Text = "Search By :";
                 textbox_studNum.Enabled = true;
                 textbox_lrn.Enabled = true;
                 refreshForm();
@@ -351,75 +351,303 @@ namespace AttendanceMonitoringSystem2
         //search
         private void button5_Click(object sender, EventArgs e)
         {
-            DatabaseConnection.DatabaseClass.connect.Close();
-            //checks if empty
-            if (String.IsNullOrEmpty(textbox_studSearch.Text) || textbox_studSearch.Text.Contains(" "))
+            if (textbox_studSearch.Text == "" || comboBox1.Text == "")
             {
-                MessageBox.Show("Student Number is Empty!", "Alert");
+                MessageBox.Show("Error");
             }
-            else
+            else if (comboBox1.Text == "Student Number")
             {
-                DatabaseConnection.DatabaseClass.connect.Open();
-                DatabaseConnection.DatabaseClass.command = new MySqlCommand(DatabaseConnection.DatabaseClass.sql_search_student(textbox_studSearch.Text), DatabaseConnection.DatabaseClass.connect);
-                DatabaseConnection.DatabaseClass.adapter.SelectCommand = DatabaseConnection.DatabaseClass.command;
-                DatabaseConnection.DatabaseClass.tableStudent.Clear();
-                DatabaseConnection.DatabaseClass.adapter.Fill(DatabaseConnection.DatabaseClass.tableStudent);
-
-                if (DatabaseConnection.DatabaseClass.tableStudent.Rows.Count > 0)
+                DatabaseConnection.DatabaseClass.connect.Close();
+                //checks if empty
+                if (String.IsNullOrEmpty(textbox_studSearch.Text) || textbox_studSearch.Text.Contains(" "))
                 {
-                    try
-                    {
-                        dataGridView1.DataSource = DatabaseConnection.DatabaseClass.tableStudent;
-
-                        //testing only
-                        DatabaseConnection.DatabaseClass.adapter.Fill(DatabaseConnection.DatabaseClass.tableStudentSearch);
-
-                        textbox_studNum.Text = Convert.ToString(DatabaseConnection.DatabaseClass.tableStudentSearch.Rows[0][0]);
-                        textbox_lrn.Text = Convert.ToString(DatabaseConnection.DatabaseClass.tableStudentSearch.Rows[0][1]);
-                        textbox_firstName.Text = Convert.ToString(DatabaseConnection.DatabaseClass.tableStudentSearch.Rows[0][2]);
-                        textbox_lastName.Text = Convert.ToString(DatabaseConnection.DatabaseClass.tableStudentSearch.Rows[0][3]);
-                        textbox_course.Text = Convert.ToString(DatabaseConnection.DatabaseClass.tableStudentSearch.Rows[0][4]);
-                        textbox_section.Text = Convert.ToString(DatabaseConnection.DatabaseClass.tableStudentSearch.Rows[0][5]);
-
-                        //pic
-                        byte[] img = (byte[])DatabaseConnection.DatabaseClass.tableStudentSearch.Rows[0][6];
-
-                        //check if empty pic
-                        if (img.Length <= 0 || img == null)
-                        {
-                            pictureBox1.Image = Image.FromFile("Student.jpg");
-                        }
-                        else
-                        {
-                            MemoryStream ms = new MemoryStream(img);
-                            pictureBox1.Image = Image.FromStream(ms);
-                            //DatabaseConnection.DatabaseClass.adapter.Dispose();
-                        }
-
-
-                        button2.Enabled = Enabled;
-                        button3.Enabled = Enabled;
-                        button1.Enabled = false;
-                        textbox_studNum.Enabled = false;
-                        textbox_lrn.Enabled = false;
-
-                        DatabaseConnection.DatabaseClass.tableStudentSearch.Clear();
-                        DatabaseConnection.DatabaseClass.connect.Close();
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.Message);
-                        DatabaseConnection.DatabaseClass.connect.Close();
-                    }
-                        
+                    MessageBox.Show("Student Number is Empty!", "Alert");
                 }
                 else
                 {
-                    MessageBox.Show("Student does not exist!", "Alert");
-                    DatabaseConnection.DatabaseClass.connect.Close();
+                    DatabaseConnection.DatabaseClass.connect.Open();
+                    DatabaseConnection.DatabaseClass.command = new MySqlCommand(DatabaseConnection.DatabaseClass.sql_search_student_Number(textbox_studSearch.Text), DatabaseConnection.DatabaseClass.connect);
+                    DatabaseConnection.DatabaseClass.adapter.SelectCommand = DatabaseConnection.DatabaseClass.command;
+                    DatabaseConnection.DatabaseClass.tableStudent.Clear();
+                    DatabaseConnection.DatabaseClass.adapter.Fill(DatabaseConnection.DatabaseClass.tableStudent);
+
+                    if (DatabaseConnection.DatabaseClass.tableStudent.Rows.Count > 0)
+                    {
+                        try
+                        {
+                            dataGridView1.DataSource = DatabaseConnection.DatabaseClass.tableStudent;
+
+                            //testing only
+                            DatabaseConnection.DatabaseClass.adapter.Fill(DatabaseConnection.DatabaseClass.tableStudentSearch);
+
+                            textbox_studNum.Text = Convert.ToString(DatabaseConnection.DatabaseClass.tableStudentSearch.Rows[0][0]);
+                            textbox_lrn.Text = Convert.ToString(DatabaseConnection.DatabaseClass.tableStudentSearch.Rows[0][1]);
+                            textbox_firstName.Text = Convert.ToString(DatabaseConnection.DatabaseClass.tableStudentSearch.Rows[0][2]);
+                            textbox_lastName.Text = Convert.ToString(DatabaseConnection.DatabaseClass.tableStudentSearch.Rows[0][3]);
+                            textbox_course.Text = Convert.ToString(DatabaseConnection.DatabaseClass.tableStudentSearch.Rows[0][4]);
+                            textbox_section.Text = Convert.ToString(DatabaseConnection.DatabaseClass.tableStudentSearch.Rows[0][5]);
+
+                            //pic
+                            byte[] img = (byte[])DatabaseConnection.DatabaseClass.tableStudentSearch.Rows[0][6];
+
+                            //check if empty pic
+                            if (img.Length <= 0 || img == null)
+                            {
+                                pictureBox1.Image = Image.FromFile("Student.jpg");
+                            }
+                            else
+                            {
+                                MemoryStream ms = new MemoryStream(img);
+                                pictureBox1.Image = Image.FromStream(ms);
+                                //DatabaseConnection.DatabaseClass.adapter.Dispose();
+                            }
+
+
+                            button2.Enabled = Enabled;
+                            button3.Enabled = Enabled;
+                            button1.Enabled = false;
+                            textbox_studNum.Enabled = false;
+                            textbox_lrn.Enabled = false;
+
+                            DatabaseConnection.DatabaseClass.tableStudentSearch.Clear();
+                            DatabaseConnection.DatabaseClass.connect.Close();
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.Message);
+                            DatabaseConnection.DatabaseClass.connect.Close();
+                        }
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("Student does not exist!", "Alert");
+                        DatabaseConnection.DatabaseClass.connect.Close();
+                    }
                 }
             }
 
+            //fRIST NAME
+            else if (comboBox1.Text == "First Name")
+            {
+                DatabaseConnection.DatabaseClass.connect.Close();
+                //checks if empty
+                if (String.IsNullOrEmpty(textbox_studSearch.Text) || textbox_studSearch.Text.Contains(" "))
+                {
+                    MessageBox.Show("Student Number is Empty!", "Alert");
+                }
+                else
+                {
+                    DatabaseConnection.DatabaseClass.connect.Open();
+                    DatabaseConnection.DatabaseClass.command = new MySqlCommand(DatabaseConnection.DatabaseClass.sql_search_student_Fname(textbox_studSearch.Text), DatabaseConnection.DatabaseClass.connect);
+                    DatabaseConnection.DatabaseClass.adapter.SelectCommand = DatabaseConnection.DatabaseClass.command;
+                    DatabaseConnection.DatabaseClass.tableStudent.Clear();
+                    DatabaseConnection.DatabaseClass.adapter.Fill(DatabaseConnection.DatabaseClass.tableStudent);
+
+                    if (DatabaseConnection.DatabaseClass.tableStudent.Rows.Count > 0)
+                    {
+                        try
+                        {
+                            dataGridView1.DataSource = DatabaseConnection.DatabaseClass.tableStudent;
+
+                            //testing only
+                            DatabaseConnection.DatabaseClass.adapter.Fill(DatabaseConnection.DatabaseClass.tableStudentSearch);
+
+                            textbox_studNum.Text = Convert.ToString(DatabaseConnection.DatabaseClass.tableStudentSearch.Rows[0][0]);
+                            textbox_lrn.Text = Convert.ToString(DatabaseConnection.DatabaseClass.tableStudentSearch.Rows[0][1]);
+                            textbox_firstName.Text = Convert.ToString(DatabaseConnection.DatabaseClass.tableStudentSearch.Rows[0][2]);
+                            textbox_lastName.Text = Convert.ToString(DatabaseConnection.DatabaseClass.tableStudentSearch.Rows[0][3]);
+                            textbox_course.Text = Convert.ToString(DatabaseConnection.DatabaseClass.tableStudentSearch.Rows[0][4]);
+                            textbox_section.Text = Convert.ToString(DatabaseConnection.DatabaseClass.tableStudentSearch.Rows[0][5]);
+
+                            //pic
+                            byte[] img = (byte[])DatabaseConnection.DatabaseClass.tableStudentSearch.Rows[0][6];
+
+                            //check if empty pic
+                            if (img.Length <= 0 || img == null)
+                            {
+                                pictureBox1.Image = Image.FromFile("Student.jpg");
+                            }
+                            else
+                            {
+                                MemoryStream ms = new MemoryStream(img);
+                                pictureBox1.Image = Image.FromStream(ms);
+                                //DatabaseConnection.DatabaseClass.adapter.Dispose();
+                            }
+
+
+                            button2.Enabled = Enabled;
+                            button3.Enabled = Enabled;
+                            button1.Enabled = false;
+                            textbox_studNum.Enabled = false;
+                            textbox_lrn.Enabled = false;
+
+                            DatabaseConnection.DatabaseClass.tableStudentSearch.Clear();
+                            DatabaseConnection.DatabaseClass.connect.Close();
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.Message);
+                            DatabaseConnection.DatabaseClass.connect.Close();
+                        }
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("Student does not exist!", "Alert");
+                        DatabaseConnection.DatabaseClass.connect.Close();
+                    }
+                }
+            }
+
+            //Last Name
+            else if (comboBox1.Text == "Last Name")
+            {
+                DatabaseConnection.DatabaseClass.connect.Close();
+                //checks if empty
+                if (String.IsNullOrEmpty(textbox_studSearch.Text) || textbox_studSearch.Text.Contains(" "))
+                {
+                    MessageBox.Show("Student Number is Empty!", "Alert");
+                }
+                else
+                {
+                    DatabaseConnection.DatabaseClass.connect.Open();
+                    DatabaseConnection.DatabaseClass.command = new MySqlCommand(DatabaseConnection.DatabaseClass.sql_search_student_Lname(textbox_studSearch.Text), DatabaseConnection.DatabaseClass.connect);
+                    DatabaseConnection.DatabaseClass.adapter.SelectCommand = DatabaseConnection.DatabaseClass.command;
+                    DatabaseConnection.DatabaseClass.tableStudent.Clear();
+                    DatabaseConnection.DatabaseClass.adapter.Fill(DatabaseConnection.DatabaseClass.tableStudent);
+
+                    if (DatabaseConnection.DatabaseClass.tableStudent.Rows.Count > 0)
+                    {
+                        try
+                        {
+                            dataGridView1.DataSource = DatabaseConnection.DatabaseClass.tableStudent;
+
+                            //testing only
+                            DatabaseConnection.DatabaseClass.adapter.Fill(DatabaseConnection.DatabaseClass.tableStudentSearch);
+
+                            textbox_studNum.Text = Convert.ToString(DatabaseConnection.DatabaseClass.tableStudentSearch.Rows[0][0]);
+                            textbox_lrn.Text = Convert.ToString(DatabaseConnection.DatabaseClass.tableStudentSearch.Rows[0][1]);
+                            textbox_firstName.Text = Convert.ToString(DatabaseConnection.DatabaseClass.tableStudentSearch.Rows[0][2]);
+                            textbox_lastName.Text = Convert.ToString(DatabaseConnection.DatabaseClass.tableStudentSearch.Rows[0][3]);
+                            textbox_course.Text = Convert.ToString(DatabaseConnection.DatabaseClass.tableStudentSearch.Rows[0][4]);
+                            textbox_section.Text = Convert.ToString(DatabaseConnection.DatabaseClass.tableStudentSearch.Rows[0][5]);
+
+                            //pic
+                            byte[] img = (byte[])DatabaseConnection.DatabaseClass.tableStudentSearch.Rows[0][6];
+
+                            //check if empty pic
+                            if (img.Length <= 0 || img == null)
+                            {
+                                pictureBox1.Image = Image.FromFile("Student.jpg");
+                            }
+                            else
+                            {
+                                MemoryStream ms = new MemoryStream(img);
+                                pictureBox1.Image = Image.FromStream(ms);
+                                //DatabaseConnection.DatabaseClass.adapter.Dispose();
+                            }
+
+
+                            button2.Enabled = Enabled;
+                            button3.Enabled = Enabled;
+                            button1.Enabled = false;
+                            textbox_studNum.Enabled = false;
+                            textbox_lrn.Enabled = false;
+
+                            DatabaseConnection.DatabaseClass.tableStudentSearch.Clear();
+                            DatabaseConnection.DatabaseClass.connect.Close();
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.Message);
+                            DatabaseConnection.DatabaseClass.connect.Close();
+                        }
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("Student does not exist!", "Alert");
+                        DatabaseConnection.DatabaseClass.connect.Close();
+                    }
+                }
+            }
+            //Course
+            else if (comboBox1.Text == "Course")
+            {
+                DatabaseConnection.DatabaseClass.connect.Close();
+                //checks if empty
+                if (String.IsNullOrEmpty(textbox_studSearch.Text) || textbox_studSearch.Text.Contains(" "))
+                {
+                    MessageBox.Show("Student Number is Empty!", "Alert");
+                }
+                else
+                {
+                    DatabaseConnection.DatabaseClass.connect.Open();
+                    DatabaseConnection.DatabaseClass.command = new MySqlCommand(DatabaseConnection.DatabaseClass.sql_search_student_Course(textbox_studSearch.Text), DatabaseConnection.DatabaseClass.connect);
+                    DatabaseConnection.DatabaseClass.adapter.SelectCommand = DatabaseConnection.DatabaseClass.command;
+                    DatabaseConnection.DatabaseClass.tableStudent.Clear();
+                    DatabaseConnection.DatabaseClass.adapter.Fill(DatabaseConnection.DatabaseClass.tableStudent);
+
+                    if (DatabaseConnection.DatabaseClass.tableStudent.Rows.Count > 0)
+                    {
+                        try
+                        {
+                            dataGridView1.DataSource = DatabaseConnection.DatabaseClass.tableStudent;
+
+                            //testing only
+                            DatabaseConnection.DatabaseClass.adapter.Fill(DatabaseConnection.DatabaseClass.tableStudentSearch);
+
+                            textbox_studNum.Text = Convert.ToString(DatabaseConnection.DatabaseClass.tableStudentSearch.Rows[0][0]);
+                            textbox_lrn.Text = Convert.ToString(DatabaseConnection.DatabaseClass.tableStudentSearch.Rows[0][1]);
+                            textbox_firstName.Text = Convert.ToString(DatabaseConnection.DatabaseClass.tableStudentSearch.Rows[0][2]);
+                            textbox_lastName.Text = Convert.ToString(DatabaseConnection.DatabaseClass.tableStudentSearch.Rows[0][3]);
+                            textbox_course.Text = Convert.ToString(DatabaseConnection.DatabaseClass.tableStudentSearch.Rows[0][4]);
+                            textbox_section.Text = Convert.ToString(DatabaseConnection.DatabaseClass.tableStudentSearch.Rows[0][5]);
+
+                            //pic
+                            byte[] img = (byte[])DatabaseConnection.DatabaseClass.tableStudentSearch.Rows[0][6];
+
+                            //check if empty pic
+                            if (img.Length <= 0 || img == null)
+                            {
+                                pictureBox1.Image = Image.FromFile("Student.jpg");
+                            }
+                            else
+                            {
+                                MemoryStream ms = new MemoryStream(img);
+                                pictureBox1.Image = Image.FromStream(ms);
+                                //DatabaseConnection.DatabaseClass.adapter.Dispose();
+                            }
+
+
+                            button2.Enabled = Enabled;
+                            button3.Enabled = Enabled;
+                            button1.Enabled = false;
+                            textbox_studNum.Enabled = false;
+                            textbox_lrn.Enabled = false;
+
+                            DatabaseConnection.DatabaseClass.tableStudentSearch.Clear();
+                            DatabaseConnection.DatabaseClass.connect.Close();
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.Message);
+                            DatabaseConnection.DatabaseClass.connect.Close();
+                        }
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("Student does not exist!", "Alert");
+                        DatabaseConnection.DatabaseClass.connect.Close();
+                    }
+                }
+            }
+            else 
+            {
+                MessageBox.Show("INPUTS ARE INCORRECT");
+            }
 
         }
 
